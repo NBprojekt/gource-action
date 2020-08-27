@@ -50,13 +50,13 @@ if [ -z "$(ls -A /gource/git_repos)" ]; then
         fi
 	fi
 
-    
+
     if [ -z "$(ls -A /gource/git_repo)" ]; then
         # // TODO: Add multi repo support
         printf "\nERROR: No Git repository found"
         exit 2
     fi
-    
+
 	printf "> \tUsing volume mounted git repo"
 	gource --output-custom-log development.log git_repo >/dev/null 2>&1 & spinner
 else
@@ -71,7 +71,7 @@ printf ">\n> Logo check \n"
 if [ "${LOGO_URL}" != "" ]; then
     printf "> \tDownloading logo"
 	wget -O ./logo.image ${LOGO_URL} >/dev/null 2>&1 & spinner
-    convert -geometry x160 ./logo.image ./logo.image 
+    convert -geometry x160 ./logo.image ./logo.image
 
     printf "> \tUsing logo from: ${LOGO_URL} \n"
     export LOGO=" -i ./logo.image "
@@ -89,10 +89,10 @@ printf "> Gource script completed"
 
 # Copy logs and output file to mounted directory
 printf "\n>\n> Copy data into mounted directory \n"
-printf "> \tCopy generated mp4" 
-cp /gource/output/gource.mp4 /data/gource.mp4 & spinner
+printf "> \tCopy generated mp4"
+cp /gource/output/gource.mp4 /github/workspace/gource.mp4 & spinner
 printf "> \tCopy log files"
-cp -r /gource/logs/ /data/ & spinner
+cp -r /gource/logs/ /github/workspace/ & spinner
 
 # Exit
 printf ">\n> Done.\n>"

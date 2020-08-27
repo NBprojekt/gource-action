@@ -13,4 +13,4 @@ jobs:
       - name: 'Current folder'
         run: ls -al
       - name: 'Gource Action'
-        uses: ../../../
+        uses: ./

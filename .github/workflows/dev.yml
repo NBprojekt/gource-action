@@ -1,0 +1,16 @@
+
+name: Gource Action Dev
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Current folder'
+        run: ls -al
+      - name: 'Gource Action'
+        uses: ../../

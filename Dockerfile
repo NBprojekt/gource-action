@@ -11,7 +11,6 @@ RUN \
     imagemagick \
     py3-pip \
     python3 \
-    subversion; \
   mkdir -p /gource; \
   mkdir -p /gource/logs; \
   mkdir -p /gource/output;
@@ -65,4 +64,4 @@ ENV \
     GOURCE_FPS="60"
 
 # Set our entrypoint.
-ENTRYPOINT  ["sh", "/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT  ["bash", "/usr/local/bin/entrypoint.sh"]

@@ -1,19 +1,20 @@
 FROM utensils/opengl:stable
 
 # Install all needed runtime dependencies.
-RUN set -xe; \
-    apk --update add --no-cache --virtual .runtime-deps \
-        bash \
-        ffmpeg \
-        git \
-        gource \
-        imagemagick \
-        py3-pip \
-        python3 \
-        subversion; \
-    mkdir -p /gource; \
-    mkdir -p /gource/logs; \
-    mkdir -p /gource/output;
+RUN \
+  set -xe; \
+  apk --update add --no-cache --virtual .runtime-deps \
+    bash \
+    ffmpeg \
+    git \
+    gource \
+    imagemagick \
+    py3-pip \
+    python3 \
+    subversion; \
+  mkdir -p /gource; \
+  mkdir -p /gource/logs; \
+  mkdir -p /gource/output;
 
 # Copy scripts into image.
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
@@ -21,8 +22,8 @@ COPY ./gource.sh /usr/local/bin/gource.sh
 
 # Add executable right to scripts
 RUN \
-  chmod +x /usr/local/bin/entrypoint.sh \
-  chmod +x /usr/local/bin/gource.sh
+  chmod +x /usr/local/bin/entrypoint.sh; \
+  chmod +x /usr/local/bin/gource.sh;
 
 # Copy assets
 COPY ./assets /gource

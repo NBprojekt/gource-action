@@ -19,6 +19,11 @@ RUN set -xe; \
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 COPY ./gource.sh /usr/local/bin/gource.sh
 
+# Add executable right to scripts
+RUN \
+  chmod +x /usr/local/bin/entrypoint.sh \
+  chmod +x /usr/local/bin/gource.sh
+
 # Copy assets
 COPY ./assets /gource
 
@@ -59,4 +64,4 @@ ENV \
     GOURCE_FPS="60"
 
 # Set our entrypoint.
-CMD ["/usr/local/bin/entrypoint.sh"]
+ENTRYPOINT  ["sh", "/usr/local/bin/entrypoint.sh"]

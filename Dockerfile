@@ -10,7 +10,7 @@ RUN \
     gource \
     imagemagick \
     py3-pip \
-    python3 \
+    python3; \
   mkdir -p /gource; \
   mkdir -p /gource/logs; \
   mkdir -p /gource/output;

@@ -29,7 +29,13 @@ COPY ./assets /gource
 
 # Set our working directory.
 WORKDIR /gource
-RUN chmod -R 777 /gource
+RUN  \
+  ls -al; \
+  ls -al logs; \
+  ls -al avatars; \
+  ls -al git_repo; \
+  ls -al git_repos; \
+  chmod -R 777 /gource;
 
 # Set our environment variables.
 ENV \

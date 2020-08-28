@@ -28,9 +28,9 @@ sleep 5
 printf "\r\t\t\t\t\t\t\t\t\t\t\t\t\t✔\n"
 
 # clean up .gitkeep files
-rm ./avatars/.gitkeep
-rm ./git_repo/.gitkeep
-rm ./git_repos/.gitkeep
+rm /gource/avatars/.gitkeep
+rm /gource/git_repo/.gitkeep
+rm /gource/git_repos/.gitkeep
 
 # Check if git repo exist, else download it from GIT_URL
 printf "\n>\n> Repository check \n"

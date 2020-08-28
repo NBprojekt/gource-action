@@ -3,14 +3,14 @@ description: 'Visualisation action for source control repositories using gource.
 author: 'Norbert Bartko'
 
 inputs:
-  git-url:
+  git_url:
     description: ''
     default: 'https://github.com/NBprojekt/writing-javascript-actions'
     required: false
-  git-token:
+  git_token:
     description: ''
     required: false
-  logo-url:
+  logo_url:
     description: ''
     default: 'https://avatars1.githubusercontent.com/u/44036562?s=280&v=4'
     required: false
@@ -18,6 +18,10 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  env:
+    - 'GIT_URL=${{ inputs.git_url }}'
+    - 'GIT_TOKEN=${{ inputs.git_token }}'
+    - 'LOGO_URL=${{ inputs.logo_url }}'
 
 branding:
   icon: 'monitor'

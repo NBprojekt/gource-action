@@ -29,20 +29,12 @@ RUN \
 
 # Set our working directory.
 WORKDIR /gource
-RUN  \
-  ls -al; \
-  ls -al logs; \
-  ls -al output; \
-  ls -al avatars; \
-  ls -al git_repo; \
-  ls -al git_repos; \
-  chmod -R 777 /gource;
+RUN chmod -R 777 /gource
 
 # Set our environment variables.
 ENV \
   DISPLAY=":99" \
   GLOBAL_FILTERS="" \
-  GOURCE_TITLE="Software Development" \
   GOURCE_AUTO_SKIP_SECONDS="0.5" \
   GOURCE_BACKGROUND_COLOR="000000" \
   GOURCE_TEXT_COLOR="FFFFFF" \

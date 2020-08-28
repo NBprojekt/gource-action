@@ -74,7 +74,7 @@ printf ">\n> Starting gource script\n"
 printf "\n> Gource script completed"
 
 # Copy logs and output file to mounted directory
-printf "\n>\n>Clean up"
+printf "\n>\n> Clean up"
 printf "\n> \tCreate output directory /github/workspace/gource"
 mkdir -p /github/workspace/gource/logs
 printf "\n> \tCopy generated mp4 to /github/workspace/gource"

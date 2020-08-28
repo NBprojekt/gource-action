@@ -123,4 +123,4 @@ printf "\n> \t\tRemoving temporary files"
 rm -rf ./tmp
 
 filesize="$(du -sh ./output/gource.mp4 | cut -f 1)"
-printf "\n> \t\tShow file size: \t\t\t\t\t\t$filesize"
+printf "\n> \t\tShow file size: $filesize"

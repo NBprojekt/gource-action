@@ -6,7 +6,7 @@ inputs:
   git-url:
     description: ''
     default: 'https://github.com/NBprojekt/writing-javascript-actions'
-    required: false
+    required: true
   git-token:
     description: ''
     required: false

@@ -72,12 +72,12 @@ else
 fi
 
 printf "> \t\tCreate temp directory"
-mkdir ./tmp & spinner
+mkdir /gource/tmp & spinner
 
 printf "> \t\tCreate gource pipe"
-mkfifo ./tmp/gource.pipe & spinner
+mkfifo /gource/tmp/gource.pipe & spinner
 printf "> \t\tCreate overlay pipe"
-mkfifo ./tmp/overlay.pipe & spinner
+mkfifo /gource/tmp/overlay.pipe & spinner
 
 
 printf "> \tGource"
@@ -99,9 +99,8 @@ gource --seconds-per-day ${GOURCE_SECONDS_PER_DAY} \
 	--bloom-multiplier 1.2 \
 	--${GOURCE_RES} \
 	--stop-at-end \
-	./development.log \
 	-r ${GOURCE_FPS} \
-	-o - >./tmp/gource.pipe &
+	-o - >/gource/tmp/gource.pipe &
 
 printf "\n> \t\tStarting Gource pipe for overlay components"
 gource --seconds-per-day ${GOURCE_SECONDS_PER_DAY} \
@@ -120,27 +119,26 @@ gource --seconds-per-day ${GOURCE_SECONDS_PER_DAY} \
 	--dir-name-depth 3 \
 	--filename-time 2 \
 	--max-user-speed 500 \
-	./development.log \
 	-r ${GOURCE_FPS} \
-	-o - >./tmp/overlay.pipe &
+	-o - >/gource/tmp/overlay.pipe &
 
 printf "\n> \t\tStart ffmpeg to merge the two video outputs"
-ffmpeg -y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/gource.pipe \
-	-y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/overlay.pipe \
+ffmpeg -y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i /gource/tmp/gource.pipe \
+	-y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i /gource/tmp/overlay.pipe \
 	${LOGO} \
 	-filter_complex "[0:v]pad=${GOURCE_PAD}${GOURCE_FILTERS}[center];\
-                         [1:v]scale=${OUTPUT_RES}[key_scale];\
-                         [1:v]scale=${OUTPUT_RES}[date_scale];\
-                         [key_scale]crop=${KEY_CROP},pad=${KEY_PAD}[key];\
-                         [date_scale]crop=${DATE_CROP},pad=${DATE_PAD}[date];\
-                         [key][center]hstack[with_key];\
-                         [date][with_key]vstack[with_date]${LOGO_FILTER_GRAPH}${GLOBAL_FILTERS}" ${FILTER_GRAPH_MAP} \
+                   [1:v]scale=${OUTPUT_RES}[key_scale];\
+                   [1:v]scale=${OUTPUT_RES}[date_scale];\
+                   [key_scale]crop=${KEY_CROP},pad=${KEY_PAD}[key];\
+                   [date_scale]crop=${DATE_CROP},pad=${DATE_PAD}[date];\
+                   [key][center]hstack[with_key];\
+                   [date][with_key]vstack[with_date]${LOGO_FILTER_GRAPH}${GLOBAL_FILTERS}" ${FILTER_GRAPH_MAP} \
 	-vcodec libx264 -level ${H264_LEVEL} -pix_fmt yuv420p -crf ${H264_CRF} -preset ${H264_PRESET} \
-	-bf 0 ./output/gource.mp4 &> ./logs/gource.log & spinner
+	-bf 0 /gource/output/gource.mp4 &> /gource/logs/gource.log & spinner
 
 printf "> \tClean up"
 printf "\n> \t\tRemoving temporary files"
-rm -rf ./tmp & spinner
+rm -rf /gource/tmp & spinner
 
 printf "> \t\tShow file size: "
 filesize="$(du -sh /gource/output/gource.mp4 | cut -f 1)"

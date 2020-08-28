@@ -32,6 +32,7 @@ WORKDIR /gource
 RUN  \
   ls -al; \
   ls -al logs; \
+  ls -al output; \
   ls -al avatars; \
   ls -al git_repo; \
   ls -al git_repos; \

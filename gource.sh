@@ -2,7 +2,7 @@
 
 printf "> \tSetup\n"
 # Predefined resolutions and settings.
-if [[ "${VIDEO_RESOLUTION}" == "2160p" ]]; then
+if [[ "${GOURCE_RESOLUTION}" == "2160p" ]]; then
 	GOURCE_RES="3500x1940"
 	OVERLAY_RES="1920x1080"
 	GOURCE_PAD="3520:1960:3520:1960:#313133"
@@ -12,7 +12,7 @@ if [[ "${VIDEO_RESOLUTION}" == "2160p" ]]; then
 	DATE_PAD="3840:200:320:200:#202021"
 	OUTPUT_RES="3840:2160"
 	printf "> \t\tUsing 2160p settings. Output will be 3840x2160 at ${GOURCE_FPS}fps.\n"
-elif [[ "${VIDEO_RESOLUTION}" == "1440p" ]]; then
+elif [[ "${GOURCE_RESOLUTION}" == "1440p" ]]; then
 	GOURCE_RES="2333x1293"
 	OVERLAY_RES="1920x1080"
 	GOURCE_PAD="2346:1306:2346:1306:#313133"
@@ -22,7 +22,7 @@ elif [[ "${VIDEO_RESOLUTION}" == "1440p" ]]; then
 	DATE_PAD="2560:134:214:134:#202021"
 	OUTPUT_RES="2560:1440"
 	printf "> \t\tUsing 1440p settings. Output will be 2560x1440 at ${GOURCE_FPS}fps.\n"
-elif [[ "${VIDEO_RESOLUTION}" == "1080p" ]]; then
+elif [[ "${GOURCE_RESOLUTION}" == "1080p" ]]; then
 	GOURCE_RES="1750x970"
 	OVERLAY_RES="1920x1080"
 	GOURCE_PAD="1760:980:1760:980:#313133"
@@ -32,7 +32,7 @@ elif [[ "${VIDEO_RESOLUTION}" == "1080p" ]]; then
 	DATE_PAD="1920:100:160:100:#202021"
 	OUTPUT_RES="1920:1080"
 	printf "> \t\tUsing 1080p settings. Output will be 1920x1080 at ${GOURCE_FPS}fps.\n"
-elif [[ "${VIDEO_RESOLUTION}" == "720p" ]]; then
+elif [[ "${GOURCE_RESOLUTION}" == "720p" ]]; then
 	GOURCE_RES="1116x646"
 	OVERLAY_RES="1920x1080"
 	GOURCE_PAD="1128:653:1128:653:#313133"

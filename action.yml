@@ -4,19 +4,28 @@ author: 'Norbert Bartko'
 
 inputs:
   git-url:
-    description: ''
+    description: 'Location of git repository. Can also be an remote repository e.g.: https://github.com/acaudwell/Gource.git'
     default: './'
-    required: true
+    required: false
   git-token:
+    description: 'If the providet repository is private the action need an topen with read scope.'
     description: ''
     required: false
   logo-url:
-    description: ''
-    default: 'https://avatars1.githubusercontent.com/u/44036562?s=280&v=4'
+    description: 'Displayed icon on bottom right corner.'
+    default: ''
     required: false
   gource-title:
-    description: ''
+    description: 'Display title on bottom left corner.'
     default: 'Title'
+    required: false
+  gource-resolution:
+    description: 'Used gource resolution.'
+    default: '1080p'
+    required: false
+  gource-fps:
+    description: 'Used gource fps.'
+    default: '60'
     required: false
 
 runs:
@@ -27,6 +36,8 @@ runs:
     GIT_TOKEN: ${{ inputs.git-token }}
     LOGO_URL: ${{ inputs.logo-url }}
     GOURCE_TITLE: ${{ inputs.gource-title }}
+    GOURCE_RESOLUTION: ${{ inputs.gource-resolution }}
+    GOURCE_FPS: ${{ inputs.gource-fps }}
 
 branding:
   icon: 'monitor'

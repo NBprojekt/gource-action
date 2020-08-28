@@ -9,8 +9,6 @@ RUN \
     git \
     gource \
     imagemagick \
-    py3-pip \
-    python3; \
   mkdir -p /gource; \
   mkdir -p /gource/logs; \
   mkdir -p /gource/avatars; \

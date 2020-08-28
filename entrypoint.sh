@@ -18,6 +18,8 @@ function spinner() {
   printf "\r$t✔\n"
 }
 
+ls -al
+
 # Start Xvfb
 printf "> Starting Xvfb "
 Xvfb :99 -ac -screen 0 $XVFB_WHD -nolisten tcp &> ./logs/Xvfb.log & spinner &
@@ -70,11 +72,11 @@ fi
 printf ">\n> Logo check \n"
 if [ "${LOGO_URL}" != "" ]; then
     printf "> \tDownloading logo"
-	wget -O ./logo.image ${LOGO_URL} >/dev/null 2>&1 & spinner
-    convert -geometry x160 ./logo.image ./logo.image
+	wget -O /gource/logo.image ${LOGO_URL} >/dev/null 2>&1 & spinner
+    convert -geometry x160 /gource/logo.image /gource/logo.image
 
     printf "> \tUsing logo from: ${LOGO_URL} \n"
-    export LOGO=" -i ./logo.image "
+    export LOGO=" -i /gource/logo.image "
     export LOGO_FILTER_GRAPH=";[with_date][2:v]overlay=main_w-overlay_w-40:main_h-overlay_h-40[with_logo]"
     export FILTER_GRAPH_MAP=" -map [with_logo] "
 else

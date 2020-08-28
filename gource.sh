@@ -44,7 +44,6 @@ elif [[ "${VIDEO_RESOLUTION}" == "720p" ]]; then
 	printf "> \t\tUsing 720p settings. Output will be 1280x720 at ${GOURCE_FPS}fps.\n"
 fi
 
-
 printf "> \t\tUsing inverted colors "
 if [[ "${INVERT_COLORS}" == "true" ]]; then
 	GOURCE_FILTERS="${GOURCE_FILTERS},lutrgb=r=negval:g=negval:b=negval"
@@ -54,12 +53,12 @@ else
 fi
 
 printf "> \t\tCreate temp directory"
-mkdir /gource/tmp
+mkdir ./tmp
 
 printf "> \t\tCreate gource pipe"
-mkfifo /gource/tmp/gource.pipe
+mkfifo ./tmp/gource.pipe
 printf "> \t\tCreate overlay pipe"
-mkfifo /gource/tmp/overlay.pipe
+mkfifo ./tmp/overlay.pipe
 
 
 printf "> \tGource"
@@ -81,9 +80,9 @@ gource --seconds-per-day ${GOURCE_SECONDS_PER_DAY} \
 	--bloom-multiplier 1.2 \
 	--${GOURCE_RES} \
 	--stop-at-end \
-	/gource/development.log \
+	./development.log \
 	-r ${GOURCE_FPS} \
-	-o - >/gource/tmp/gource.pipe &
+	-o - >./tmp/gource.pipe &
 
 printf "\n> \t\tStarting Gource pipe for overlay components"
 gource --seconds-per-day ${GOURCE_SECONDS_PER_DAY} \
@@ -102,13 +101,13 @@ gource --seconds-per-day ${GOURCE_SECONDS_PER_DAY} \
 	--dir-name-depth 3 \
 	--filename-time 2 \
 	--max-user-speed 500 \
-	/gource/development.log \
+	./development.log \
 	-r ${GOURCE_FPS} \
-	-o - >/gource/tmp/overlay.pipe &
+	-o - >./tmp/overlay.pipe &
 
 printf "\n> \t\tStart ffmpeg to merge the two video outputs"
-ffmpeg -y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i /gource/tmp/gource.pipe \
-	-y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i /gource/tmp/overlay.pipe \
+ffmpeg -y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/gource.pipe \
+	-y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/overlay.pipe \
 	${LOGO} \
 	-filter_complex "[0:v]pad=${GOURCE_PAD}${GOURCE_FILTERS}[center];\
                    [1:v]scale=${OUTPUT_RES}[key_scale];\
@@ -118,12 +117,12 @@ ffmpeg -y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i /gource/tmp/gource.p
                    [key][center]hstack[with_key];\
                    [date][with_key]vstack[with_date]${LOGO_FILTER_GRAPH}${GLOBAL_FILTERS}" ${FILTER_GRAPH_MAP} \
 	-vcodec libx264 -level ${H264_LEVEL} -pix_fmt yuv420p -crf ${H264_CRF} -preset ${H264_PRESET} \
-	-bf 0 /gource/output/gource.mp4 &> /gource/logs/gource.log
+	-bf 0 ./output/gource.mp4 &> ./logs/gource.log
 
 printf "> \tClean up"
 printf "\n> \t\tRemoving temporary files"
-rm -rf /gource/tmp
+rm -rf ./tmp
 
 printf "> \t\tShow file size: "
-filesize="$(du -sh /gource/output/gource.mp4 | cut -f 1)"
+filesize="$(du -sh ./output/gource.mp4 | cut -f 1)"
 printf "\r\t\t\t\t\t\t\t\t\t\t\t\t\t$filesize\n"

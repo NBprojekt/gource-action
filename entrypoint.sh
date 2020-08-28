@@ -24,6 +24,7 @@ if [ -z "$(ls -A ./git_repos)" ]; then
     if [ "${GIT_URL}" != $(sed "s/.\//\/github\/workflow\@&/g" <<< ${GIT_URL}) ]; then
       printf "> \tUsing local repository: ${GIT_URL}"
       cp -rf $(sed "s/.\//\/github\/workflow\/&/g" <<< ${GIT_URL}) ./git_repo
+      ls -al
     else
       # Check if git repo need token
       if [ "${GIT_TOKEN}" == "" ]; then
@@ -40,15 +41,15 @@ if [ -z "$(ls -A ./git_repos)" ]; then
 
   if [ -z "$(ls -A ./git_repo)" ]; then
     # // TODO: Add multi repo support
-    printf "\nERROR: No Git repository found"
+    printf "\n\nERROR: No Git repository found"
     exit 2
   fi
 
-	printf "> \tUsing volume mounted git repo"
+	printf "\n> \tUsing volume mounted git repo"
 	gource --output-custom-log ./development.log ./git_repo >/dev/null 2>&1
 else
     # // TODO: Add multi repo support
-	printf "\nERROR: Currently multiple repos are not supported"
+	printf "\n\nERROR: Currently multiple repos are not supported"
     exit 1
 fi
 
@@ -82,5 +83,5 @@ printf "\n> \tCopy log files"
 cp -r ./logs/ /github/workspace/
 
 # Exit
-printf ">\n> Done.\n>"
+printf "\n>\n> Done.\n>"
 exit 0

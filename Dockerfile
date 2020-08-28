@@ -8,7 +8,7 @@ RUN \
     ffmpeg \
     git \
     gource \
-    imagemagick \
+    imagemagick; \
   mkdir -p /gource; \
   mkdir -p /gource/logs; \
   mkdir -p /gource/avatars; \

@@ -19,7 +19,7 @@ if [ -z "$(ls -A ./git_repos)" ]; then
 	# Check if git repo needs to be cloned
   if [ -z "$(ls -A ./git_repo)" ]; then
     # Check if GIT_URL is a local folder
-    if [[ ${GIT_URL:0:3} == "./" ]]; then
+    if [[ ${GIT_URL:0:2} == "./" ]]; then
       printf "> \tUsing local repository: $(sed "s/.\//\/github\/workspace\/&/g" <<< ${GIT_URL})"
       cp -rf $(sed "s/.\//\/github\/workspace\/&/g" <<< ${GIT_URL}) ./git_repo
       ls -al ./git_repo

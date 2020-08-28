@@ -48,7 +48,7 @@ fi
 
 
 # Set proper env variables if we have a logo.
-printf ">\n> Logo check \n"
+printf "\n>\n> Logo check"
 if [ "${LOGO_URL}" != "" ]; then
     printf "\n> \tDownloading logo"
 	wget -O ./logo.image ${LOGO_URL} >/dev/null 2>&1
@@ -66,7 +66,7 @@ fi
 # Run the visualization
 printf ">\n> Starting gource script\n"
 /usr/local/bin/gource.sh
-printf "> Gource script completed"
+printf "\n> Gource script completed"
 
 # Copy logs and output file to mounted directory
 printf "\n>\n> Copy data into mounted directory"

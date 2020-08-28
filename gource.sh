@@ -122,6 +122,5 @@ printf "\n> \tClean up"
 printf "\n> \t\tRemoving temporary files"
 rm -rf ./tmp
 
-printf "\n> \t\tShow file size: "
 filesize="$(du -sh ./output/gource.mp4 | cut -f 1)"
-printf "\r\t\t\t\t\t\t\t\t\t\t\t\t\t$filesize\n"
+printf "\n> \t\tShow file size: \t\t\t\t\t\t$filesize"

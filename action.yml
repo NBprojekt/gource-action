@@ -61,7 +61,7 @@ inputs:
     required: false
   gource-hide-items:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    default: 'usernames,mouse,date,filenames'
+    default: 'mouse,date,filenames'
     required: false
   gource-max-user-speed:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'

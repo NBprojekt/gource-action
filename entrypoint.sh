@@ -68,6 +68,15 @@ else
   export FILTER_GRAPH_MAP=" -map [with_date] "
 fi
 
+# Copy user imgages if provided
+printf "\n>\n> Avatars check"
+if [ "${AVATARS_URL}" != "" ]; then
+  printf "\n> \tDownloading logo"
+  cp -rf $(sed "s/.\//\/github\/workspace\/&/g" <<< ${AVATARS_URL}) ./avatars
+else
+  printf "\n> \tNo user images directory provided, skipping avatars setup\n"
+fi
+
 # Run the visualization
 printf ">\n> Starting gource script\n"
 /usr/local/bin/gource.sh

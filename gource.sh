@@ -44,24 +44,23 @@ elif [[ "${VIDEO_RESOLUTION}" == "720p" ]]; then
 	printf "> \t\tUsing 720p settings. Output will be 1280x720 at ${GOURCE_FPS}fps.\n"
 fi
 
-printf "> \t\tUsing inverted colors "
 if [[ "${INVERT_COLORS}" == "true" ]]; then
+  printf "> \t\tUsing inverted colors "
 	GOURCE_FILTERS="${GOURCE_FILTERS},lutrgb=r=negval:g=negval:b=negval"
-  	printf "\r\t\t\t\t\t\t\t\t\t\t\t\t\t✔\n"
 else
-  	printf "\r\t\t\t\t\t\t\t\t\t\t\t\t\t✖\n"
+  printf "> \t\tNot using inverted colors "
 fi
 
-printf "> \t\tCreate temp directory"
+printf "\n> \t\tCreate temp directory"
 mkdir ./tmp
 
-printf "> \t\tCreate gource pipe"
+printf "\n> \t\tCreate gource pipe"
 mkfifo ./tmp/gource.pipe
-printf "> \t\tCreate overlay pipe"
+printf "\n> \t\tCreate overlay pipe"
 mkfifo ./tmp/overlay.pipe
 
 
-printf "> \tGource"
+printf "\n> \tGource"
 printf "\n> \t\tStarting Gource pipe for git repo"
 gource --seconds-per-day ${GOURCE_SECONDS_PER_DAY} \
 	--user-scale ${GOURCE_USER_SCALE} \
@@ -119,10 +118,10 @@ ffmpeg -y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/gource.pipe \
 	-vcodec libx264 -level ${H264_LEVEL} -pix_fmt yuv420p -crf ${H264_CRF} -preset ${H264_PRESET} \
 	-bf 0 ./output/gource.mp4 &> ./logs/gource.log
 
-printf "> \tClean up"
+printf "\n> \tClean up"
 printf "\n> \t\tRemoving temporary files"
 rm -rf ./tmp
 
-printf "> \t\tShow file size: "
+printf "\n> \t\tShow file size: "
 filesize="$(du -sh ./output/gource.mp4 | cut -f 1)"
 printf "\r\t\t\t\t\t\t\t\t\t\t\t\t\t$filesize\n"

@@ -13,6 +13,9 @@ RUN \
     python3; \
   mkdir -p /gource; \
   mkdir -p /gource/logs; \
+  mkdir -p /gource/avatars; \
+  mkdir -p /gource/git_repo; \
+  mkdir -p /gource/git_repos; \
   mkdir -p /gource/output;
 
 # Copy scripts into image.

@@ -41,7 +41,7 @@ RUN  \
 # Set our environment variables.
 ENV \
   DISPLAY=":99" \
-  GIT_URL="https://github.com/acaudwell/Gource.git" \
+  GIT_URL="https://github.com/NBprojekt/writing-javascript-actions" \
   GIT_TOKEN="" \
   LOGO_URL="https://avatars1.githubusercontent.com/u/44036562?s=280&v=4" \
   GLOBAL_FILTERS="" \

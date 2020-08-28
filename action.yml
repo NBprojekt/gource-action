@@ -9,7 +9,7 @@ inputs:
     required: false
   git-token:
     description: 'If the providet repository is private the action need an topen with read scope.'
-    description: ''
+    default: ''
     required: false
   logo-url:
     description: 'Displayed icon on bottom right corner.'

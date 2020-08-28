@@ -78,9 +78,9 @@ printf "\n>\n>Clean up"
 printf "\n> \tCreate output directory /github/workspace/gource"
 mkdir -p /github/workspace/gource
 printf "\n> \tCopy generated mp4 to /github/workspace/gource"
-cp ./output/gource.mp4 /github/workspace/gource/gource.mp4
+cp ./output/gource.mp4 /github/workspace/gource
 printf "\n> \tCopy logs to /github/workspace/gource/logs"
-cp ./logs/* /github/workspace/gource/logs
+cp ./logs /github/workspace/gource
 printf "\n> \tDelete working directory"
 rm -r /gource
 

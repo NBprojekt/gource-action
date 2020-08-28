@@ -21,8 +21,8 @@ if [ -z "$(ls -A ./git_repos)" ]; then
     # Check if GIT_URL is a local folder
     if [[ ${GIT_URL:0:2} == "./" ]]; then
       printf "> \tUsing local repository: $(sed "s/.\//\/github\/workspace\/&/g" <<< ${GIT_URL})"
+      # The action working directory im ounted as /github/workspace
       cp -rf $(sed "s/.\//\/github\/workspace\/&/g" <<< ${GIT_URL}) ./git_repo
-      ls -al ./git_repo
     else
       # Check if git repo need token
       if [ "${GIT_TOKEN}" == "" ]; then

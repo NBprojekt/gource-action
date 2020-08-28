@@ -71,14 +71,15 @@ fi
 # Copy user imgages if provided
 printf "\n>\n> Avatars check"
 if [ "${AVATARS_URL}" != "" ]; then
-  printf "\n> \tDownloading logo"
+  printf "\n> \tCopy avatars directory"
   cp -rf $(sed "s/.\//\/github\/workspace\/&\/*/g" <<< ${AVATARS_URL}) ./avatars
+  ls -al ./avatars
 else
-  printf "\n> \tNo user images directory provided, skipping avatars setup\n"
+  printf "\n> \tNo avatars directory provided, skipping avatars setup"
 fi
 
 # Run the visualization
-printf ">\n> Starting gource script\n"
+printf "\n>\n> Starting gource script\n"
 /usr/local/bin/gource.sh
 printf "\n> Gource script completed"
 

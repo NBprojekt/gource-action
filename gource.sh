@@ -1,23 +1,5 @@
 #!/bin/bash
 
-# Loading animation
-function spinner() {
-  local pid=$!
-  local spin='⣾⣽⣻⢿⡿⣟⣯⣷'
-
-  local i=0
-  local t="\t\t\t\t\t\t\t\t\t\t\t\t\t"
-
-  while kill -0 $pid 2>/dev/null
-  do
-    i=$(( (i+1) %${#spin} ))
-    printf "\r$t${spin:$i:1}\t"
-    sleep .15
-  done
-
-  printf "\r$t✔\n"
-}
-
 printf "> \tSetup\n"
 # Predefined resolutions and settings.
 if [[ "${VIDEO_RESOLUTION}" == "2160p" ]]; then
@@ -72,12 +54,12 @@ else
 fi
 
 printf "> \t\tCreate temp directory"
-mkdir /gource/tmp & spinner
+mkdir /gource/tmp
 
 printf "> \t\tCreate gource pipe"
-mkfifo /gource/tmp/gource.pipe & spinner
+mkfifo /gource/tmp/gource.pipe
 printf "> \t\tCreate overlay pipe"
-mkfifo /gource/tmp/overlay.pipe & spinner
+mkfifo /gource/tmp/overlay.pipe
 
 
 printf "> \tGource"
@@ -136,11 +118,11 @@ ffmpeg -y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i /gource/tmp/gource.p
                    [key][center]hstack[with_key];\
                    [date][with_key]vstack[with_date]${LOGO_FILTER_GRAPH}${GLOBAL_FILTERS}" ${FILTER_GRAPH_MAP} \
 	-vcodec libx264 -level ${H264_LEVEL} -pix_fmt yuv420p -crf ${H264_CRF} -preset ${H264_PRESET} \
-	-bf 0 /gource/output/gource.mp4 &> /gource/logs/gource.log & spinner
+	-bf 0 /gource/output/gource.mp4 &> /gource/logs/gource.log
 
 printf "> \tClean up"
 printf "\n> \t\tRemoving temporary files"
-rm -rf /gource/tmp & spinner
+rm -rf /gource/tmp
 
 printf "> \t\tShow file size: "
 filesize="$(du -sh /gource/output/gource.mp4 | cut -f 1)"

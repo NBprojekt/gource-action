@@ -1,28 +1,12 @@
 #!/bin/bash
 
-# Loading animation
-function spinner() {
-  local pid=$!
-  local spin='⣾⣽⣻⢿⡿⣟⣯⣷'
-
-  local i=0
-  local t="\t\t\t\t\t\t\t\t\t\t\t\t\t"
-
-  while kill -0 $pid 2>/dev/null
-  do
-    i=$(( (i+1) %${#spin} ))
-    printf "\r$t${spin:$i:1}\t"
-    sleep .15
-  done
-
-  printf "\r$t✔\n"
-}
-
 ls -al
+pwd
+cd /gource
 
 # Start Xvfb
 printf "> Starting Xvfb "
-Xvfb :99 -ac -screen 0 $XVFB_WHD -nolisten tcp &> ./logs/Xvfb.log & spinner &
+Xvfb :99 -ac -screen 0 $XVFB_WHD -nolisten tcp &> ./logs/Xvfb.log &
 xvfb_pid="$!"
 
 # possible race condition waiting for Xvfb.
@@ -44,11 +28,11 @@ if [ -z "$(ls -A /gource/git_repos)" ]; then
 	    # Check if git repo need token
         if [ "${GIT_TOKEN}" == "" ]; then
             printf "> \tCloning from public: ${GIT_URL}"
-            timeout 25s git clone ${GIT_URL} /gource/git_repo >/dev/null 2>&1 & spinner
+            timeout 25s git clone ${GIT_URL} /gource/git_repo >/dev/null 2>&1
         else
             printf "> \tCloning from private: ${GIT_URL}"
             # Add git token to access private repository
-            timeout 25s git clone $(sed "s/git/${GIT_TOKEN}\@&/g" <<< ${GIT_URL}) /gource/git_repo >/dev/null 2>&1 & spinner
+            timeout 25s git clone $(sed "s/git/${GIT_TOKEN}\@&/g" <<< ${GIT_URL}) /gource/git_repo >/dev/null 2>&1
         fi
 	fi
 
@@ -60,7 +44,7 @@ if [ -z "$(ls -A /gource/git_repos)" ]; then
     fi
 
 	printf "> \tUsing volume mounted git repo"
-	gource --output-custom-log /gource/development.log /gource/git_repo >/dev/null 2>&1 & spinner
+	gource --output-custom-log /gource/development.log /gource/git_repo >/dev/null 2>&1
 else
     # // TODO: Add multi repo support
 	printf "\nERROR: Currently multiple repos are not supported"
@@ -72,7 +56,7 @@ fi
 printf ">\n> Logo check \n"
 if [ "${LOGO_URL}" != "" ]; then
     printf "> \tDownloading logo"
-	wget -O /gource/logo.image ${LOGO_URL} >/dev/null 2>&1 & spinner
+	wget -O /gource/logo.image ${LOGO_URL} >/dev/null 2>&1
     convert -geometry x160 /gource/logo.image /gource/logo.image
 
     printf "> \tUsing logo from: ${LOGO_URL} \n"
@@ -92,9 +76,9 @@ printf "> Gource script completed"
 # Copy logs and output file to mounted directory
 printf "\n>\n> Copy data into mounted directory \n"
 printf "> \tCopy generated mp4"
-cp /gource/output/gource.mp4 /github/workspace/gource.mp4 & spinner
+cp /gource/output/gource.mp4 /github/workspace/gource.mp4
 printf "> \tCopy log files"
-cp -r /gource/logs/ /github/workspace/ & spinner
+cp -r /gource/logs/ /github/workspace/
 
 # Exit
 printf ">\n> Done.\n>"

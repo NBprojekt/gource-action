@@ -21,4 +21,4 @@ jobs:
 
 
       - name: 'Check output'
-        run: ls -al /github/workflow
+        run: ls -al ./

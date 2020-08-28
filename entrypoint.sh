@@ -58,7 +58,7 @@ if [ -z "$(ls -A /gource/git_repos)" ]; then
     fi
 
 	printf "> \tUsing volume mounted git repo"
-	gource --output-custom-log development.log git_repo >/dev/null 2>&1 & spinner
+	gource --output-custom-log /gource/development.log /gource/git_repo >/dev/null 2>&1 & spinner
 else
     # // TODO: Add multi repo support
 	printf "\nERROR: Currently multiple repos are not supported"

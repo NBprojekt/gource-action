@@ -99,6 +99,7 @@ gource --seconds-per-day ${GOURCE_SECONDS_PER_DAY} \
 	--bloom-multiplier 1.2 \
 	--${GOURCE_RES} \
 	--stop-at-end \
+	/gource/development.log \
 	-r ${GOURCE_FPS} \
 	-o - >/gource/tmp/gource.pipe &
 
@@ -119,6 +120,7 @@ gource --seconds-per-day ${GOURCE_SECONDS_PER_DAY} \
 	--dir-name-depth 3 \
 	--filename-time 2 \
 	--max-user-speed 500 \
+	/gource/development.log \
 	-r ${GOURCE_FPS} \
 	-o - >/gource/tmp/overlay.pipe &
 

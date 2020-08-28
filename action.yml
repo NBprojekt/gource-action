@@ -19,9 +19,9 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    - 'GIT_URL=${{ inputs.git_url }}'
-    - 'GIT_TOKEN=${{ inputs.git_token }}'
-    - 'LOGO_URL=${{ inputs.logo_url }}'
+    GIT_URL: ${{ inputs.git_url }}
+    GIT_TOKEN: ${{ inputs.git_token }}
+    LOGO_URL: ${{ inputs.logo_url }}
 
 branding:
   icon: 'monitor'

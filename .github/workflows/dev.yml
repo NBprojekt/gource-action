@@ -18,6 +18,8 @@ jobs:
 
       - name: 'Gource Action'
         uses: ./
+        with:
+          git-url: https://github.com/NBprojekt/writing-javascript-actions
 
       - name: 'Check output'
         run: ls -al ./

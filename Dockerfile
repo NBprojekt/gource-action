@@ -29,7 +29,12 @@ COPY ./assets /gource
 
 # Set our working directory.
 WORKDIR /gource
-RUN ls -al
+RUN \
+  ls -al; \
+  ls -al logs; \
+  ls -al avatars; \
+  ls -al git_repo; \
+  ls -al git_repos;
 
 # Set our environment variables.
 ENV \

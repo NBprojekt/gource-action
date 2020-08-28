@@ -71,9 +71,8 @@ fi
 # Copy user imgages if provided
 printf "\n>\n> Avatars check"
 if [ "${AVATARS_URL}" != "" ]; then
-  printf "\n> \tCopy avatars directory: $(sed "s/.\//\/github\/workspace\/&/g" <<< ${AVATARS_URL})"
+  printf "\n> \tCopy avatars directory"
   cp -rf $(sed "s/.\//\/github\/workspace\/&\/\*/g\/\*" <<< ${AVATARS_URL}) ./avatars
-  ls -al ./avatars
 else
   printf "\n> \tNo avatars directory provided, skipping avatars setup"
 fi

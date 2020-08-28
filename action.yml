@@ -15,6 +15,10 @@ inputs:
     description: 'Displayed icon on bottom right corner.'
     default: ''
     required: false
+  avatars-url:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: ''
+    required: false
   gource-title:
     description: 'Display title on bottom left corner.'
     default: 'Title'
@@ -27,6 +31,54 @@ inputs:
     description: 'Used gource fps.'
     default: '60'
     required: false
+  gource-auto-skip-seconds:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: '0.5'
+    required: false
+  gource-background-color:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: '000000'
+    required: false
+  gource-text-color:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: 'FFFFFF'
+    required: false
+  gource-camera-mode:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: 'overview'
+    required: false
+  gource-dir-depth:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: '3'
+    required: false
+  gource-filename-time:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: '2'
+    required: false
+  gource-font-size:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: '44'
+    required: false
+  gource-hide-items:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: 'usernames,mouse,date,filenames'
+    required: false
+  gource-max-user-speed:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: '500'
+    required: false
+  gource-seconds-per-day:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: '0.1'
+    required: false
+  gource-time-scale:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: '1.5'
+    required: false
+  gource-user-scale:
+    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    default: '1.5'
+    required: false
 
 runs:
   using: 'docker'
@@ -35,9 +87,22 @@ runs:
     GIT_URL: ${{ inputs.git-url }}
     GIT_TOKEN: ${{ inputs.git-token }}
     LOGO_URL: ${{ inputs.logo-url }}
+    AVATARS_URL: ${{ inputs.avatars-url }}
     GOURCE_TITLE: ${{ inputs.gource-title }}
     GOURCE_RESOLUTION: ${{ inputs.gource-resolution }}
     GOURCE_FPS: ${{ inputs.gource-fps }}
+    GOURCE_AUTO_SKIP_SECONDS: ${{ inputs.gource-auto-skip-seconds }}
+    GOURCE_BACKGROUND_COLOR: ${{ inputs.gource-background-color }}
+    GOURCE_TEXT_COLOR: ${{ inputs.gource-text-color }}
+    GOURCE_CAMERA_MODE: ${{ inputs.gource-camera-mode }}
+    GOURCE_DIR_DEPTH: ${{ inputs.gource-dir-depth }}
+    GOURCE_FILENAME_TIME: ${{ inputs.gource-filename-time }}
+    GOURCE_FONT_SIZE: ${{ inputs.gource-font-size }}
+    GOURCE_HIDE_ITEMS: ${{ inputs.gource-hide-items }}
+    GOURCE_MAX_USER_SPEED: ${{ inputs.gource-max-user-speed }}
+    GOURCE_SECONDS_PER_DAY: ${{ inputs.gource-seconds-per-day }}
+    GOURCE_TIME_SCALE: ${{ inputs.gource-time-scale }}
+    GOURCE_USER_SCALE: ${{ inputs.gource-user-scale }}
 
 branding:
   icon: 'monitor'

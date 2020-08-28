@@ -19,24 +19,31 @@ if [ -z "$(ls -A ./git_repos)" ]; then
     printf "> \tUsing single repo \n"
 
 	# Check if git repo needs to be cloned
-    if [ -z "$(ls -A ./git_repo)" ]; then
-	    # Check if git repo need token
-        if [ "${GIT_TOKEN}" == "" ]; then
-            printf "> \tCloning from public: ${GIT_URL}"
-            timeout 25s git clone ${GIT_URL} ./git_repo >/dev/null 2>&1
-        else
-            printf "> \tCloning from private: ${GIT_URL}"
-            # Add git token to access private repository
-            timeout 25s git clone $(sed "s/git/${GIT_TOKEN}\@&/g" <<< ${GIT_URL}) ./git_repo >/dev/null 2>&1
-        fi
-	fi
+  if [ -z "$(ls -A ./git_repo)" ]; then
+    # Check if GIT_URL is a local folder
+    if [ "${GIT_URL}" == ./* ]; then
+      printf "> \tUsing local repository: ${GIT_URL}"
+      cp -rf $(sed "s/.\//\/github\/workflow\@&/g" <<< ${GIT_URL}) ./git_repo
 
-
-    if [ -z "$(ls -A ./git_repo)" ]; then
-        # // TODO: Add multi repo support
-        printf "\nERROR: No Git repository found"
-        exit 2
+    else
+      # Check if git repo need token
+      if [ "${GIT_TOKEN}" == "" ]; then
+          printf "> \tCloning from public: ${GIT_URL}"
+          timeout 25s git clone ${GIT_URL} ./git_repo >/dev/null 2>&1
+      else
+          printf "> \tCloning from private: ${GIT_URL}"
+          # Add git token to access private repository
+          timeout 25s git clone $(sed "s/git/${GIT_TOKEN}\@&/g" <<< ${GIT_URL}) ./git_repo >/dev/null 2>&1
+      fi
     fi
+  fi
+
+
+  if [ -z "$(ls -A ./git_repo)" ]; then
+    # // TODO: Add multi repo support
+    printf "\nERROR: No Git repository found"
+    exit 2
+  fi
 
 	printf "> \tUsing volume mounted git repo"
 	gource --output-custom-log ./development.log ./git_repo >/dev/null 2>&1

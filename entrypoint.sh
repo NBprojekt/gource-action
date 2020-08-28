@@ -75,10 +75,12 @@ printf "\n> Gource script completed"
 
 # Copy logs and output file to mounted directory
 printf "\n>\n>Clean up"
+printf "\n> \tCreate output directory /github/workspace/gource"
+mkdir -p /github/workspace/gource
 printf "\n> \tCopy generated mp4 to /github/workspace/gource"
 cp ./output/gource.mp4 /github/workspace/gource/gource.mp4
 printf "\n> \tCopy logs to /github/workspace/gource/logs"
-cp -r ./logs/ /github/workspace/gource
+cp ./logs/* /github/workspace/gource/logs
 printf "\n> \tDelete working directory"
 rm -r /gource
 

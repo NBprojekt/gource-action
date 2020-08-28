@@ -19,6 +19,10 @@ jobs:
       - name: 'Gource Action'
         uses: ./
 
-
       - name: 'Check output'
         run: ls -al ./
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: gource
+          path: ./gource

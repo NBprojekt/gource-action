@@ -27,9 +27,6 @@ RUN \
   chmod +x /usr/local/bin/entrypoint.sh; \
   chmod +x /usr/local/bin/gource.sh;
 
-# Copy assets
-COPY ./assets /gource
-
 # Set our working directory.
 WORKDIR /gource
 RUN  \

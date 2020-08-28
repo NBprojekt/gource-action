@@ -8,7 +8,7 @@ inputs:
     default: './'
     required: false
   git-token:
-    description: 'If the providet repository is private the action need an topen with read scope.'
+    description: 'If the provided repository is private the action need an topen with read scope.'
     default: ''
     required: false
   logo-url:

@@ -18,3 +18,7 @@ jobs:
 
       - name: 'Gource Action'
         uses: ./
+
+
+      - name: 'Check output'
+        run: ls -al /github/workflow

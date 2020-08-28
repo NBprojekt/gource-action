@@ -42,11 +42,11 @@ if [ -z "$(ls -A /gource/git_repos)" ]; then
 	    # Check if git repo need token
         if [ "${GIT_TOKEN}" == "" ]; then
             printf "> \tCloning from public: ${GIT_URL}"
-            timeout 25s git clone ${GIT_URL} git_repo >/dev/null 2>&1 & spinner
+            timeout 25s git clone ${GIT_URL} /gource/git_repo >/dev/null 2>&1 & spinner
         else
             printf "> \tCloning from private: ${GIT_URL}"
             # Add git token to access private repository
-            timeout 25s git clone $(sed "s/git/${GIT_TOKEN}\@&/g" <<< ${GIT_URL}) git_repo >/dev/null 2>&1 & spinner
+            timeout 25s git clone $(sed "s/git/${GIT_TOKEN}\@&/g" <<< ${GIT_URL}) /gource/git_repo >/dev/null 2>&1 & spinner
         fi
 	fi
 

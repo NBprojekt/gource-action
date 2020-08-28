@@ -29,7 +29,7 @@ COPY ./assets /gource
 
 # Set our working directory.
 WORKDIR /gource
-RUN chmod -R 777 /opt/lampp/htdocs
+RUN chmod -R 777 /gource
 
 # Set our environment variables.
 ENV \

@@ -23,7 +23,7 @@ if [ -z "$(ls -A ./git_repos)" ]; then
     # Check if GIT_URL is a local folder
     if [ "${GIT_URL}" != $(sed "s/.\//\/github\/workflow\@&/g" <<< ${GIT_URL}) ]; then
       printf "> \tUsing local repository: ${GIT_URL}"
-      cp -rf $(sed "s/.\//\/github\/workflow\@&/g" <<< ${GIT_URL}) ./git_repo
+      cp -rf $(sed "s/.\//\/github\/workflow\/&/g" <<< ${GIT_URL}) ./git_repo
     else
       # Check if git repo need token
       if [ "${GIT_TOKEN}" == "" ]; then

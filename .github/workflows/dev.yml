@@ -20,7 +20,7 @@ jobs:
         uses: ./
         with:
           git-url: ./
-          avatars-url: ./avatars/*
+          avatars-url: ./avatars/
 
       - name: 'Check output'
         run: ls -al ./

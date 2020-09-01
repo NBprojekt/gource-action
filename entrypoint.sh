@@ -72,7 +72,7 @@ fi
 printf "\n>\n> Avatars check"
 if [ "${INPUT_AVATARS}" != "" ]; then
   printf "\n> \tCopy avatars directory: ${INPUT_AVATARS-URL}"
-  cp "/github/workspace/${INPUT_AVATARS-URL}/*" ./avatars/
+  cp "/github/workspace/${INPUT_AVATARS-URL}/*" /gource/avatars
 else
   printf "\n> \tNo avatars directory provided, skipping avatars setup"
 fi

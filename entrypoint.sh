@@ -76,7 +76,7 @@ if [ "${AVATARS_URL}" != "" ]; then
 else
   printf "\n> \tNo avatars directory provided, skipping avatars setup"
 fi
-
+ls -al /github/workspace
 ls -al /gource/avatars
 
 # Run the visualization

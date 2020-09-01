@@ -87,7 +87,6 @@ runs:
     GIT_URL: ${{ inputs.git-url }}
     GIT_TOKEN: ${{ inputs.git-token }}
     LOGO_URL: ${{ inputs.logo-url }}
-    AVATARS_URL: ${{ inputs.avatars-url }}
     GOURCE_TITLE: ${{ inputs.gource-title }}
     GOURCE_RESOLUTION: ${{ inputs.gource-resolution }}
     GOURCE_FPS: ${{ inputs.gource-fps }}

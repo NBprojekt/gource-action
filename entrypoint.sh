@@ -71,12 +71,13 @@ fi
 # Copy user imgages if provided
 printf "\n>\n> Avatars check"
 if [ "${AVATARS_URL}" != "" ]; then
-  printf "\n> \tCopy avatars directory"
-  cp "/github/workspace/${AVATARS_URL}/*" ./avatars/
+  printf "\n> \tCopy avatars directory: ${INPUT_AVATARS-URL}"
+  cp "/github/workspace/${INPUT_AVATARS-URL}/*" ./avatars/
 else
   printf "\n> \tNo avatars directory provided, skipping avatars setup"
 fi
-ls -al /github/workspace
+ls -al /github/workspace/avatars
+ls -al /github/workspace/./avatars/
 ls -al /gource/avatars
 
 # Run the visualization

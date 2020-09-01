@@ -70,7 +70,7 @@ fi
 
 # Copy user imgages if provided
 printf "\n>\n> Avatars check"
-if [ "${INPUT_AVATARS}" != "" ]; then
+if [ "${INPUT_AVATARS-URL}" != "" ]; then
   printf "\n> \tCopy avatars directory: ${INPUT_AVATARS-URL}"
   cp "/github/workspace/${INPUT_AVATARS-URL}/*" /gource/avatars
 else

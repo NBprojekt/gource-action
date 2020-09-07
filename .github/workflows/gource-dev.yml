@@ -16,7 +16,7 @@ jobs:
         run: ls -al
 
       - name: 'Gource Action'
-        uses: nbprojekt/gource-action@master
+        uses: ./
         with:
           git_url: ./
           gource_title: 'Gource Action Development'

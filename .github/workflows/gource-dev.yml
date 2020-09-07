@@ -18,9 +18,9 @@ jobs:
       - name: 'Gource Action'
         uses: nbprojekt/gource-action@master
         with:
-          git_url: https://github.com/docker/cli
-          gource_title: 'Docker CLI'
-          logo_url: 'https://user-images.githubusercontent.com/24683383/92395924-70189f80-f124-11ea-815c-aa4d9f4de29d.png'
+          git_url: ./
+          gource_title: 'Gource Action Development'
+          logo_url: 'https://user-images.githubusercontent.com/24683383/92398226-79a40680-f128-11ea-9f54-6ccbaca4a6a5.png'
           gource_resolution: '1080p'
           gource_fps: 60
           gource_font_size: 40

@@ -96,7 +96,7 @@ rm -r /gource
 
 # If gource.mp4 dont exist exit with error
 if [ ! -f /github/workspace/gource/gource.mp4 ]; then
-  printf "\n>\n> ERROR: Can't fint: /github/workspace/gource/gource.mp4\n>"
+  printf "\n>\n> ERROR: Can't find: /github/workspace/gource/gource.mp4\n>"
   exit 2
 fi
 

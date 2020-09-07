@@ -34,31 +34,3 @@ jobs:
         with:
           name: gource
           path: ./gource
-
-  dev-action-no-date:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: 'Checkout'
-        uses: actions/checkout@v2
-
-      - name: 'Current folder'
-        run: ls -al
-
-      - name: 'Gource Action'
-        uses: nbprojekt/gource-action@master
-        with:
-          git_url: ./
-          gource_title: 'Gource Action Development'
-          logo_url: 'https://user-images.githubusercontent.com/24683383/92398226-79a40680-f128-11ea-9f54-6ccbaca4a6a5.png'
-          gource_resolution: '1080p'
-          gource_fps: 60
-          gource_font_size: 40
-
-      - name: 'Check output'
-        run: ls -al ./
-
-      - uses: actions/upload-artifact@v2
-        with:
-          name: gource
-          path: ./gource

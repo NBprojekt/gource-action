@@ -62,10 +62,10 @@ mkfifo ./tmp/overlay.pipe
 # Handle optional params whitch are not allowed to be empty
 optionalParams=()
 if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
-    optionalParams+=(--start-date "${INPUT_GOURCE_START_DATE}")
+    optionalParams+=("--start-date \"${INPUT_GOURCE_START_DATE}\"")
 fi
 if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
-    optionalParams+=(--stop-date "${INPUT_GOURCE_STOP_DATE}")
+    optionalParams+=("--stop-date \"${INPUT_GOURCE_STOP_DATE}\"")
 fi
 
 echo "Optional params: _${optionalParams[@]}_"
@@ -89,7 +89,8 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--bloom-multiplier 1.2 \
 	--${GOURCE_RES} \
 	--stop-at-end \
-	./development.log ${optionalParams[@]} \
+	./development.log \
+  ${optionalParams[@]} \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/gource.pipe &
 
@@ -110,7 +111,8 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--dir-name-depth 3 \
 	--filename-time 2 \
 	--max-user-speed 500 \
-	./development.log ${optionalParams[@]} \
+	./development.log \
+  ${optionalParams[@]} \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/overlay.pipe &
 

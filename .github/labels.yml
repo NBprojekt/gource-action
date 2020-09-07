@@ -76,6 +76,6 @@
 - name: 'Resolved: Won't Fix'
   description: The reported behaviour will not be changed
   color: 651ace
-- name: Triage
+- name: 'Triage'
   description: Issue needs to be triaged
   color: 7057ff

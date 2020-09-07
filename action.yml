@@ -83,6 +83,14 @@ inputs:
     description: 'Change scale of user avatars.'
     default: '1.2'
     required: false
+  gource_start_date:
+    description: 'Start with the first entry after the supplied date and optional time.'
+    default: ''
+    required: false
+  gource_stop_date:
+    description: 'Stop after the last entry prior to the supplied date and optional time.'
+    default: ''
+    required: false
 
 runs:
   using: 'docker'

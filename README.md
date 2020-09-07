@@ -50,6 +50,8 @@ jobs:
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
         
       - name: 'Gource Action'
         uses: nbprojekt/gource-action@v1

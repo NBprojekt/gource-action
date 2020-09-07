@@ -1,4 +1,3 @@
-
 name: Gource Action Dev
 on:
   push:

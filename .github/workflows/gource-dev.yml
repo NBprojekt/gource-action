@@ -19,7 +19,7 @@ jobs:
         uses: ./
         with:
           git_url: https://github.com/docker/cli
-          title: 'Docker CLI'
+          gource_title: 'Docker CLI'
           logo_url: 'https://user-images.githubusercontent.com/24683383/92395924-70189f80-f124-11ea-815c-aa4d9f4de29d.png'
           gource_resolution: '1080p'
           gource_fps: '60'

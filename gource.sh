@@ -89,7 +89,6 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--${GOURCE_RES} \
 	--stop-at-end \
 	./development.log \
-  "${optionalParams[@]}" \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/gource.pipe &
 
@@ -111,7 +110,6 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--filename-time 2 \
 	--max-user-speed 500 \
 	./development.log \
-  "${optionalParams[@]}" \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/overlay.pipe &
 

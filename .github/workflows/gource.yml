@@ -15,7 +15,6 @@ jobs:
         with:
           fetch-depth: 0
 
-
       - name: 'Gource Action'
         uses: nbprojekt/gource-action@master
         with:

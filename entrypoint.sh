@@ -94,6 +94,11 @@ cp ./logs/* /github/workspace/gource/logs
 printf "\n> \tDelete working directory"
 rm -r /gource
 
+# If gource.mp4 dont exist exit with error
+if [ ! -f /github/workspace/gource/gource.mp4 ]; then
+  printf "\n>\n> ERROR: Can't fint: /github/workspace/gource/gource.mp4\n>"
+  exit 2
+fi
 
 # Exit
 printf "\n>\n> Done.\n>"

@@ -129,9 +129,5 @@ ffmpeg -y -r ${INPUT_GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/gource.p
 	-vcodec libx264 -level ${H264_LEVEL} -pix_fmt yuv420p -crf ${H264_CRF} -preset ${H264_PRESET} \
 	-bf 0 ./output/gource.mp4 &> ./logs/gource.log
 
-printf "\n> \tClean up"
-printf "\n> \t\tRemoving temporary files"
-rm -rf ./tmp
-
 filesize="$(du -sh ./output/gource.mp4 | cut -f 1)"
 printf "\n> \t\tShow file size: $filesize"

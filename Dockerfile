@@ -8,28 +8,30 @@ RUN \
     ffmpeg \
     git \
     gource \
-    imagemagick; \
-  mkdir -p /gource; \
-  mkdir -p /gource/logs; \
-  mkdir -p /gource/avatars; \
-  mkdir -p /gource/git_repo; \
-  mkdir -p /gource/git_repos; \
-  mkdir -p /gource/output;
+    imagemagick;
 
-# Copy scripts into image.
-COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
-COPY ./gource.sh /usr/local/bin/gource.sh
+# Copy scripts into image
+COPY ./entrypoint.sh ./gource.sh /usr/local/bin/
 
 # Add executable right to scripts
 RUN \
   chmod +x /usr/local/bin/entrypoint.sh; \
   chmod +x /usr/local/bin/gource.sh;
 
-# Set our working directory.
+# Create working directories
+RUN \
+  mkdir /gource; \
+  mkdir /gource/logs; \
+  mkdir /gource/avatars; \
+  mkdir /gource/git_repo; \
+  mkdir /gource/git_repos; \
+  mkdir /gource/output;
+
+# Set working directory with full access
 WORKDIR /gource
 RUN chmod -R 777 /gource
 
-# Set our environment variables.
+# Set environment variables
 ENV \
   DISPLAY=":99" \
   GLOBAL_FILTERS="" \
@@ -39,9 +41,7 @@ ENV \
   H264_LEVEL="5.1" \
   H264_PRESET="medium" \
   INVERT_COLORS="false" \
-  OVERLAY_FONT_COLOR="0f5ca8" \
-  XVFB_WHD="3840x2160x24" \
-  GOURCE_FPS="60"
+  XVFB_WHD="3840x2160x24"
 
 # Set our entrypoint.
 ENTRYPOINT  ["bash", "/usr/local/bin/entrypoint.sh"]

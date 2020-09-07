@@ -65,6 +65,8 @@ printf "\n> \t\tStarting Gource pipe for git repo"
 gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--user-scale ${INPUT_GOURCE_USER_SCALE} \
 	--time-scale ${INPUT_GOURCE_TIME_SCALE} \
+	--start-date "${INPUT_GOURCE_START_DATE}" \
+	--stop-date "${INPUT_GOURCE_STOP_DATE}" \
 	--auto-skip-seconds ${INPUT_GOURCE_AUTO_SKIP_SECONDS} \
 	--title "${INPUT_GOURCE_TITLE}" \
 	--background-colour ${INPUT_GOURCE_BACKGROUND_COLOR} \
@@ -87,6 +89,8 @@ printf "\n> \t\tStarting Gource pipe for overlay components"
 gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--user-scale ${INPUT_GOURCE_USER_SCALE} \
 	--time-scale ${INPUT_GOURCE_TIME_SCALE} \
+	--start-date "${INPUT_GOURCE_START_DATE}" \
+	--stop-date "${INPUT_GOURCE_STOP_DATE}" \
 	--auto-skip-seconds ${INPUT_GOURCE_AUTO_SKIP_SECONDS} \
 	--key \
 	--transparent \

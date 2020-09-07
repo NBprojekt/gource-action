@@ -26,7 +26,7 @@
   <a href="#settings"> Settings </a> &bull;
   <a href="#advanced-example"> Advanced example </a> &bull;
   <a href="#advanced-settigns"> Advanced Settings </a> &bull;
-  <a href="#comming-soon"> Comming soon </a> &bull;
+  <a href="#Todos"> Todos </a> &bull;
   <a href="#maintainer"> Maintainer </a> 
 </p>
 
@@ -135,7 +135,7 @@ A full list of all available options can be found [here][gource-docs].
 
 > More comming soon.
 
-## Comming soon
+## Todos
 
 - #1 Visualizing Multiple Repositories
 

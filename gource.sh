@@ -59,14 +59,21 @@ mkfifo ./tmp/gource.pipe
 printf "\n> \t\tCreate overlay pipe"
 mkfifo ./tmp/overlay.pipe
 
+# Handle optional params whitch are not allowed to be empty
+optionalParams=()
+if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
+    optionalParams+=(--start-date "${INPUT_GOURCE_START_DATE}")
+fi
+if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
+    optionalParams+=(--stop-date "${INPUT_GOURCE_STOP_DATE}")
+fi
+
 
 printf "\n> \tGource"
 printf "\n> \t\tStarting Gource pipe for git repo"
 gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--user-scale ${INPUT_GOURCE_USER_SCALE} \
 	--time-scale ${INPUT_GOURCE_TIME_SCALE} \
-	--start-date "${INPUT_GOURCE_START_DATE}" \
-	--stop-date "${INPUT_GOURCE_STOP_DATE}" \
 	--auto-skip-seconds ${INPUT_GOURCE_AUTO_SKIP_SECONDS} \
 	--title "${INPUT_GOURCE_TITLE}" \
 	--background-colour ${INPUT_GOURCE_BACKGROUND_COLOR} \
@@ -82,6 +89,7 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--${GOURCE_RES} \
 	--stop-at-end \
 	./development.log \
+  "${optionalParams[@]}" \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/gource.pipe &
 
@@ -89,8 +97,6 @@ printf "\n> \t\tStarting Gource pipe for overlay components"
 gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--user-scale ${INPUT_GOURCE_USER_SCALE} \
 	--time-scale ${INPUT_GOURCE_TIME_SCALE} \
-	--start-date "${INPUT_GOURCE_START_DATE}" \
-	--stop-date "${INPUT_GOURCE_STOP_DATE}" \
 	--auto-skip-seconds ${INPUT_GOURCE_AUTO_SKIP_SECONDS} \
 	--key \
 	--transparent \
@@ -105,6 +111,7 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--filename-time 2 \
 	--max-user-speed 500 \
 	./development.log \
+  "${optionalParams[@]}" \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/overlay.pipe &
 

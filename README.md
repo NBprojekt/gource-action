@@ -1,7 +1,7 @@
 <!-- Project img -->
 <p align="center">
-  <a href="https://github.com/nbproject/github-action">
-    <img src="https://user-images.githubusercontent.com/24683383/92391218-8a4e7f80-f11c-11ea-8aee-a7e9ff89f6f6.png" width="200">
+  <a href="https://github.com/nbproject/gource-action">
+    <img src="https://user-images.githubusercontent.com/24683383/92398226-79a40680-f128-11ea-9f54-6ccbaca4a6a5.png" width="200">
   </a>
 </p> 
 
@@ -22,6 +22,7 @@
 <p align="center">
   <a href="#getting-started"> Getting Started </a> &bull;
   <a href="#settings"> Settings </a> &bull;
+  <a href="#advanced-example"> Advanced example </a> &bull;
   <a href="#advanced-settigns"> Advanced Settings </a> &bull;
   <a href="#comming-soon"> Comming soon </a> &bull;
   <a href="#maintainer"> Maintainer </a> 
@@ -49,7 +50,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: 'Gource Action'
-        uses: // TODO
+        uses: nbprojekt/gource-action@v1
 
       - name: 'Upload gource video'
         uses: actions/upload-artifact@v2
@@ -73,6 +74,39 @@ Keys can be added directly to your .yml config file or referenced from your proj
 | gource_resolution         	| false     	| 1080p                	| Used gource resolution (2160p, 1440p, 1080p, 720p).             	                                          |
 
 ## Advanced Settings
+Lets use a more advanced setup to visualize the development from the [Docker CLI][docker-cli].
+```yml
+name: Gource Action for Docker CLI
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  action:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Gource Action'
+        uses: nbprojekt/gource-action@v1
+        with:
+          git_url: https://github.com/docker/cli
+          gource_title: 'Docker CLI'
+          logo_url: 'https://user-images.githubusercontent.com/24683383/92395924-70189f80-f124-11ea-815c-aa4d9f4de29d.png'
+          gource_resolution: '1080p'
+          gource_fps: 60
+          gource_font_size: 40
+          gource_start_date: '2016-04-18'
+          gource_stop_date: '2019-12-31'
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: gource
+          path: ./gource/gource.mp4
+```
+> This action can take up to _17 Minutes_
+
+## Advanced example
 This settings are all supported setting for [gource][gource-homepage] itself.  
 A full list of all available options can be found [here][gource-docs].
 
@@ -108,5 +142,6 @@ A full list of all available options can be found [here][gource-docs].
 | :---: |
 
 <!-- Links -->
+[docker-cli]: https://github.com/docker/cli
 [gource-homepage]: https://gource.io/
 [gource-docs]: https://github.com/acaudwell/Gource/blob/master/README

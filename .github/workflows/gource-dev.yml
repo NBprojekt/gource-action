@@ -18,8 +18,7 @@ jobs:
       - name: 'Gource Action'
         uses: ./
         with:
-          git_url: ./
-          avatars_url: ./avatars/
+          git_url: https://github.com/docker/cli
 
       - name: 'Check output'
         run: ls -al ./

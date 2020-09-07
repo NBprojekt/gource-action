@@ -45,19 +45,19 @@
 - name: 'Needs: More Information'
   description: The author needs to provide more information on the issue.
   color: c513d6
-- name: P1
+- name: 'P1'
   description: Bug or feature that has to be be fixed in the next patch
   color: 0D47A1
-- name: P2
+- name: 'P2'
   description: Bug or feature that has to be be fixed in the next minor patch
   color: 1976D2
-- name: P3
+- name: 'P3'
   description: Bug or feature that has to be be fixed in the next major patch
   color: 42A5F5
-- name: P4
+- name: 'P4'
   description:
   color: 8DC9F9
-- name: P5
+- name: 'P5'
   description:
   color: C5DEF5
 - name: 'Question'

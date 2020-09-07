@@ -77,14 +77,6 @@ if [ "${INPUT_AVATARS_URL}" != "" ]; then
 else
   printf "\n> \tNo avatars directory provided, skipping avatars setup\n"
 fi
-echo "Workspace avatars:"
-ls -al /github/workspace/avatars
-echo "Workspace ./avatars:"
-ls -al /github/workspace/./avatars/
-echo "Workspace ${INPUT_AVATARS_URL}:"
-ls -al /github/workspace/${INPUT_AVATARS_URL}
-echo "Gource avatars:"
-ls -al /gource/avatars
 
 # Run the visualization
 printf "\n>\n> Starting gource script\n"

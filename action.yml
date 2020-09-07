@@ -1,4 +1,4 @@
-name: 'Gource Action'
+name: 'Gource-Action'
 description: 'Visualisation action for source control repositories using gource.'
 author: 'Norbert Bartko'
 

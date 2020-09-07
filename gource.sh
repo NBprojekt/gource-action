@@ -60,15 +60,15 @@ printf "\n> \t\tCreate overlay pipe"
 mkfifo ./tmp/overlay.pipe
 
 # Handle optional params whitch are not allowed to be empty
-optionalParams=()
+OPTIONAL_PARAMS=""
 if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
-    optionalParams+=("--start-date \"${INPUT_GOURCE_START_DATE}\"")
+    OPTIONAL_PARAMS+="--start-date \"${INPUT_GOURCE_START_DATE}\" "
 fi
 if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
-    optionalParams+=("--stop-date \"${INPUT_GOURCE_STOP_DATE}\"")
+    OPTIONAL_PARAMS+="--stop-date \"${INPUT_GOURCE_STOP_DATE}\" "
 fi
 
-echo "Optional params: _${optionalParams[@]}_"
+echo "Optional params: _${OPTIONAL_PARAMS}}_"
 
 printf "\n> \tGource"
 printf "\n> \t\tStarting Gource pipe for git repo"
@@ -89,7 +89,8 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--bloom-multiplier 1.2 \
 	--${GOURCE_RES} \
 	--stop-at-end \
-	./development.log "${optionalParams[@]}" \
+  ${OPTIONAL_PARAMS} \
+	./development.log \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/gource.pipe &
 
@@ -110,7 +111,8 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--dir-name-depth 3 \
 	--filename-time 2 \
 	--max-user-speed 500 \
-	./development.log "${optionalParams[@]}" \
+  ${OPTIONAL_PARAMS} \
+	./development.log \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/overlay.pipe &
 

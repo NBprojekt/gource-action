@@ -19,19 +19,19 @@ if [ -z "$(ls -A ./git_repos)" ]; then
 	# Check if git repo needs to be cloned
   if [ -z "$(ls -A ./git_repo)" ]; then
     # Check if GIT_URL is a local folder
-    if [[ ${GIT_URL:0:2} == "./" ]]; then
-      printf "> \tUsing local repository: $(sed "s/.\//\/github\/workspace\/&/g" <<< ${GIT_URL})"
+    if [[ ${INPUT_GIT_URL:0:2} == "./" ]]; then
+      printf "> \tUsing local repository: $(sed "s/.\//\/github\/workspace\/&/g" <<< ${INPUT_GIT_URL})"
       # The action working directory im ounted as /github/workspace
-      cp -rf $(sed "s/.\//\/github\/workspace\/&/g" <<< ${GIT_URL}) ./git_repo
+      cp -rf $(sed "s/.\//\/github\/workspace\/&/g" <<< ${INPUT_GIT_URL}) ./git_repo
     else
       # Check if git repo need token
-      if [ "${GIT_TOKEN}" == "" ]; then
-        printf "> \tCloning from public: ${GIT_URL}"
-        timeout 25s git clone ${GIT_URL} ./git_repo >/dev/null 2>&1
+      if [ "${INPUT_GIT_TOKEN}" == "" ]; then
+        printf "> \tCloning from public: ${INPUT_GIT_URL}"
+        timeout 25s git clone ${INPUT_GIT_URL} ./git_repo >/dev/null 2>&1
       else
-        printf "> \tCloning from private: ${GIT_URL}"
+        printf "> \tCloning from private: ${INPUT_GIT_URL}"
         # Add git token to access private repository
-        timeout 25s git clone $(sed "s/git/${GIT_TOKEN}\@&/g" <<< ${GIT_URL}) ./git_repo >/dev/null 2>&1
+        timeout 25s git clone $(sed "s/git/${GIT_TOKEN}\@&/g" <<< ${INPUT_GIT_URL}) ./git_repo >/dev/null 2>&1
       fi
     fi
   fi
@@ -54,12 +54,13 @@ fi
 
 # Set proper env variables if we have a logo.
 printf "\n>\n> Logo check"
-if [ "${LOGO_URL}" != "" ]; then
+if [ "${INPUT_LOGO_URL}" != "" ]; then
+  # // TODO: Add support for local logo
   printf "\n> \tDownloading logo"
-	wget -O ./logo.image ${LOGO_URL} >/dev/null 2>&1
+	wget -O ./logo.image ${INPUT_LOGO_URL} >/dev/null 2>&1
   convert -geometry x160 ./logo.image ./logo.image
 
-  printf "\n> \tUsing logo from: ${LOGO_URL} \n"
+  printf "\n> \tUsing logo from: ${INPUT_LOGO_URL} \n"
   export LOGO=" -i ./logo.image "
   export LOGO_FILTER_GRAPH=";[with_date][2:v]overlay=main_w-overlay_w-40:main_h-overlay_h-40[with_logo]"
   export FILTER_GRAPH_MAP=" -map [with_logo] "

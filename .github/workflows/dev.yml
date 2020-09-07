@@ -19,7 +19,7 @@ jobs:
       - name: 'Gource Action'
         uses: ./
         with:
-          git-url: ./
+          git_url: ./
           avatars_url: ./avatars/
 
       - name: 'Check output'

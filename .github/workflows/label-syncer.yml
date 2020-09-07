@@ -6,8 +6,10 @@ on:
     paths:
       - .github/labels.yml
 jobs:
-  build:
+  sync-labels:
+    name: 'Sync labels'
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2

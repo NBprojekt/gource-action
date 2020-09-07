@@ -3,15 +3,15 @@ description: 'Visualisation action for source control repositories using gource.
 author: 'Norbert Bartko'
 
 inputs:
-  git-url:
+  git_url:
     description: 'Location of git repository. Can also be an remote repository e.g.: https://github.com/acaudwell/Gource.git'
     default: './'
     required: false
-  git-token:
-    description: 'If the provided repository is private the action need an topen with read scope.'
+  git_token:
+    description: 'If the provided repository is private, the action need an token with read scope.'
     default: ''
     required: false
-  logo-url:
+  logo_url:
     description: 'Displayed icon on bottom right corner.'
     default: ''
     required: false
@@ -19,63 +19,63 @@ inputs:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: ''
     required: false
-  gource-title:
+  gource_title:
     description: 'Display title on bottom left corner.'
     default: 'Title'
     required: false
-  gource-resolution:
+  gource_resolution:
     description: 'Used gource resolution.'
     default: '1080p'
     required: false
-  gource-fps:
+  gource_fps:
     description: 'Used gource fps.'
     default: '60'
     required: false
-  gource-auto-skip-seconds:
+  gource_auto_skip_seconds:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: '0.5'
     required: false
-  gource-background-color:
+  gource_background_color:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: '000000'
     required: false
-  gource-text-color:
+  gource_text_color:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: 'FFFFFF'
     required: false
-  gource-camera-mode:
+  gource_camera_mode:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: 'overview'
     required: false
-  gource-dir-depth:
+  gource_dir_depth:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: '3'
     required: false
-  gource-filename-time:
+  gource_filename_time:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: '2'
     required: false
-  gource-font-size:
+  gource_font_size:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: '44'
     required: false
-  gource-hide-items:
+  gource_hide_items:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: 'mouse,date,filenames'
     required: false
-  gource-max-user-speed:
+  gource_max_user_speed:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: '500'
     required: false
-  gource-seconds-per-day:
+  gource_seconds_per_day:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: '0.1'
     required: false
-  gource-time-scale:
+  gource_time_scale:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: '1.5'
     required: false
-  gource-user-scale:
+  gource_user_scale:
     description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
     default: '1.5'
     required: false
@@ -83,26 +83,7 @@ inputs:
 runs:
   using: 'docker'
   image: 'Dockerfile'
-  env:
-    GIT_URL: ${{ inputs.git-url }}
-    GIT_TOKEN: ${{ inputs.git-token }}
-    LOGO_URL: ${{ inputs.logo-url }}
-    GOURCE_TITLE: ${{ inputs.gource-title }}
-    GOURCE_RESOLUTION: ${{ inputs.gource-resolution }}
-    GOURCE_FPS: ${{ inputs.gource-fps }}
-    GOURCE_AUTO_SKIP_SECONDS: ${{ inputs.gource-auto-skip-seconds }}
-    GOURCE_BACKGROUND_COLOR: ${{ inputs.gource-background-color }}
-    GOURCE_TEXT_COLOR: ${{ inputs.gource-text-color }}
-    GOURCE_CAMERA_MODE: ${{ inputs.gource-camera-mode }}
-    GOURCE_DIR_DEPTH: ${{ inputs.gource-dir-depth }}
-    GOURCE_FILENAME_TIME: ${{ inputs.gource-filename-time }}
-    GOURCE_FONT_SIZE: ${{ inputs.gource-font-size }}
-    GOURCE_HIDE_ITEMS: ${{ inputs.gource-hide-items }}
-    GOURCE_MAX_USER_SPEED: ${{ inputs.gource-max-user-speed }}
-    GOURCE_SECONDS_PER_DAY: ${{ inputs.gource-seconds-per-day }}
-    GOURCE_TIME_SCALE: ${{ inputs.gource-time-scale }}
-    GOURCE_USER_SCALE: ${{ inputs.gource-user-scale }}
 
 branding:
   icon: 'monitor'
-  color: 'pruple'
+  color: 'purple'

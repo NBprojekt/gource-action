@@ -16,11 +16,11 @@ inputs:
     default: ''
     required: false
   avatars_url:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Path of local directory containing user avatars.'
     default: ''
     required: false
   gource_title:
-    description: 'Display title on bottom left corner.'
+    description: 'Set a title.'
     default: 'Title'
     required: false
   gource_resolution:
@@ -32,56 +32,56 @@ inputs:
     default: '60'
     required: false
   gource_auto_skip_seconds:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Skip to next entry if nothing happens for a number of seconds.'
     default: '0.5'
     required: false
   gource_background_color:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Background colour in hex.'
     default: '000000'
     required: false
   gource_font_color:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Font color used by the date and title in hex.'
     default: 'FFFFFF'
     required: false
   gource_font_size:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Font size used by the date and title.'
     default: '44'
     required: false
   gource_overlay_font_color:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: ''Font color used by the overlay.'
     default: 'FFFFFF'
     required: false
   gource_camera_mode:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Camera mode (overview,track).'
     default: 'overview'
     required: false
   gource_dir_depth:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Draw names of directories down to a specific depth in the tree.'
     default: '3'
     required: false
   gource_filename_time:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Duration to keep filenames on screen (>= 2.0).'
     default: '2'
     required: false
   gource_hide_items:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Hide one or more display elements from the list below.'
     default: 'mouse,date,filenames'
     required: false
   gource_max_user_speed:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Max speed users can travel per second.'
     default: '500'
     required: false
   gource_seconds_per_day:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Speed of simulation in seconds per day.'
     default: '0.1'
     required: false
   gource_time_scale:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    description: 'Change simulation time scale.'
     default: '1.5'
     required: false
   gource_user_scale:
-    description: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-    default: '1.5'
+    description: 'Change scale of user avatars.'
+    default: '1.2'
     required: false
 
 runs:

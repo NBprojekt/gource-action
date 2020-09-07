@@ -87,9 +87,8 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--filename-time ${INPUT_GOURCE_FILENAME_TIME} \
 	--max-user-speed ${INPUT_GOURCE_MAX_USER_SPEED} \
 	--bloom-multiplier 1.2 \
-	--${GOURCE_RES} \
+	--${GOURCE_RES} ${OPTIONAL_PARAMS} \
 	--stop-at-end \
-  ${OPTIONAL_PARAMS} \
 	./development.log \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/gource.pipe &
@@ -106,7 +105,7 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--camera-mode overview \
 	--hide bloom,dirnames,files,filenames,mouse,root,tree,users,usernames \
 	--font-size 60 \
-	--${OVERLAY_RES} \
+	--${OVERLAY_RES} ${OPTIONAL_PARAMS} \
 	--stop-at-end \
 	--dir-name-depth 3 \
 	--filename-time 2 \

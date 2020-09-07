@@ -1,4 +1,4 @@
-name: Gource Action
+name: Gource Action Build
 on:
   release:
     types:

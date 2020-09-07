@@ -68,7 +68,7 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--auto-skip-seconds ${INPUT_GOURCE_AUTO_SKIP_SECONDS} \
 	--title "${INPUT_GOURCE_TITLE}" \
 	--background-colour ${INPUT_GOURCE_BACKGROUND_COLOR} \
-	--font-colour ${INPUT_GOURCE_TEXT_COLOR} \
+	--font-colour ${INPUT_GOURCE_FONT_COLOR} \
 	--user-image-dir ${GOURCE_USER_IMAGE_DIR} \
 	--camera-mode ${INPUT_GOURCE_CAMERA_MODE} \
 	--hide ${INPUT_GOURCE_HIDE_ITEMS} \
@@ -91,7 +91,7 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--key \
 	--transparent \
 	--background-colour 202021 \
-	--font-colour ${OVERLAY_FONT_COLOR} \
+	--font-colour ${INPUT_GOURCE_OVERLAY_FONT_COLOR} \
 	--camera-mode overview \
 	--hide bloom,dirnames,files,filenames,mouse,root,tree,users,usernames \
 	--font-size 60 \
@@ -105,8 +105,8 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	-o - >./tmp/overlay.pipe &
 
 printf "\n> \t\tStart ffmpeg to merge the two video outputs"
-ffmpeg -y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/gource.pipe \
-	-y -r ${GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/overlay.pipe \
+ffmpeg -y -r ${INPUT_GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/gource.pipe \
+	-y -r ${INPUT_GOURCE_FPS} -f image2pipe -probesize 100M -i ./tmp/overlay.pipe \
 	${LOGO} \
 	-filter_complex "[0:v]pad=${GOURCE_PAD}${GOURCE_FILTERS}[center];\
                    [1:v]scale=${OUTPUT_RES}[key_scale];\

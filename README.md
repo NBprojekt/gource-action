@@ -81,10 +81,11 @@ A full list of all available options can be found [here][gource-docs].
 | gource_title              	| false     	| Title                	| Set a title.                                                    	                                         	|
 | gource_fps                	| false     	| 60                   	| Used gource fps.                                                	                                         	|
 | gource_auto_skip_seconds  	| false     	| 0.5                  	| Skip to next entry if nothing happens for a number of seconds.  	                                         	|
-| gource_background_color   	| false     	| 000000               	| Background colour in hex.                                       	                                         	|
-| gource_font_color         	| false     	| FFFFFF               	| Font color used by the date and title in hex.                   	                                         	|
+| gource_background_color   	| false     	| 0a0a0a               	| Background colour in hex.                                       	                                         	|
+| gource_overlay_background_color | false  	| 202021               	| Overlay background colour in hex.                                       	                                 	|
+| gource_font_color         	| false     	| F0F0F0               	| Font color used by the date and title in hex.                   	                                         	|
+| gource_overlay_font_color 	| false     	| F0F0F0               	| Font color used by the overlay in hex.                                	                                   	|
 | gource_font_size          	| false     	| 44                   	| Font size used by the date and title.                           	                                         	|
-| gource_overlay_font_color 	| false     	| FFFFFF               	| Font color used by the overlay.                                 	                                         	|
 | gource_camera_mode        	| false     	| overview             	| Camera mode (overview, track).                                  	                                         	|
 | gource_dir_depth          	| false     	| 3                    	| Draw names of directories down to a specific depth in the tree. 	                                         	|
 | gource_filename_time      	| false     	| 2                    	| Duration to keep filenames on screen (>= 2.0).                  	                                         	|

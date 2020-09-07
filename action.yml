@@ -37,19 +37,23 @@ inputs:
     required: false
   gource_background_color:
     description: 'Background colour in hex.'
-    default: '000000'
+    default: '0a0a0a'
+    required: false
+  gource_overlay_background_color:
+    description: 'Overlay background colour in hex.'
+    default: '202021'
     required: false
   gource_font_color:
     description: 'Font color used by the date and title in hex.'
-    default: 'FFFFFF'
+    default: 'F0F0F0'
+    required: false
+  gource_overlay_font_color:
+    description: 'Font color used by the overlay in hex.'
+    default: 'F0F0F0'
     required: false
   gource_font_size:
     description: 'Font size used by the date and title.'
     default: '44'
-    required: false
-  gource_overlay_font_color:
-    description: 'Font color used by the overlay.'
-    default: 'FFFFFF'
     required: false
   gource_camera_mode:
     description: 'Camera mode (overview, track).'

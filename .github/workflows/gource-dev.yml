@@ -24,8 +24,8 @@ jobs:
           gource_resolution: '1080p'
           gource_fps: 60
           gource_font_size: 40
-          gource_start_date: '2016-04-18'
-          gource_stop_date: '2019-12-31'
+          gource_start_date: '2020-08-25'
+          gource_stop_date: '2020-09-06'
 
       - name: 'Check output'
         run: ls -al ./

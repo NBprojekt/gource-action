@@ -16,7 +16,7 @@ jobs:
         run: ls -al
 
       - name: 'Gource Action'
-        uses: ./
+        uses: nbprojekt/gource-action@master
         with:
           git_url: https://github.com/docker/cli
           gource_title: 'Docker CLI'

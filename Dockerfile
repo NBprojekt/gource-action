@@ -14,9 +14,7 @@ RUN \
 COPY ./entrypoint.sh ./gource.sh /usr/local/bin/
 
 # Add executable right to scripts
-RUN \
-  chmod +x /usr/local/bin/entrypoint.sh; \
-  chmod +x /usr/local/bin/gource.sh;
+RUN chmod +x /usr/local/bin/{entrypoint.sh,gource.sh}
 
 # Create working directories
 RUN \

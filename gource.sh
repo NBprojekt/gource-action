@@ -61,11 +61,11 @@ mkfifo ./tmp/overlay.pipe
 
 # Handle optional params whitch are not allowed to be empty
 OPTIONAL_PARAMS=""
-if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
-    OPTIONAL_PARAMS+="--start-date \"${INPUT_GOURCE_START_DATE}\" "
+if [[ $INPUT_GOURCE_STOP_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
+    OPTIONAL_PARAMS+="--stop-date \"${INPUT_GOURCE_STOP_DATE}\" "
 fi
 if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
-    OPTIONAL_PARAMS+="--stop-date \"${INPUT_GOURCE_STOP_DATE}\" "
+    OPTIONAL_PARAMS+="--start-date \"${INPUT_GOURCE_START_DATE}\" "
 fi
 
 echo "Optional params: _${OPTIONAL_PARAMS}_"

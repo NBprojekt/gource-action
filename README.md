@@ -8,6 +8,8 @@
 <!-- About -->
 <h2 align="center"> <b> Gource Action </b> </h2>
 <h4 align="center"> Action to visualize your source code using gource </h4>
+<h4 align="center"> Core image is comming from:  <a href="https://github.com/utensils/Envisaged">utensils/Envisaged</a></h4>
+<br/>
 
 <!-- Pipes -->
 <p align="center">

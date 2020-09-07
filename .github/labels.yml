@@ -58,7 +58,7 @@
 - name: P5
   description:
   color: C5DEF5
-- name: Question
+- name: 'Question'
   description: Question about this project
   color: 7057ff
 - name: 'Resolved: Answered'

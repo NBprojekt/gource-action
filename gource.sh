@@ -68,7 +68,7 @@ if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it'
     OPTIONAL_PARAMS+="--start-date ${INPUT_GOURCE_START_DATE} "
 fi
 
-echo "Optional params: _${OPTIONAL_PARAMS}_"
+printf "\n> \t\tUsing optional params: ${OPTIONAL_PARAMS}"
 
 printf "\n> \tGource"
 printf "\n> \t\tStarting Gource pipe for git repo"

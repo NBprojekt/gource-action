@@ -1,0 +1,81 @@
+- name: Blocked
+  description: Blocked by another issue we need to address first.
+  color: d73a4a
+- name: Bot
+  description: A bot interacted with this issue or pull request
+  color: 6f57db
+- name: Bug
+  description: Something isn't working
+  color: d73a4a
+- name: CI / CD
+  description: Related to continuous integration and delivery
+  color: 0366d6
+- name: Dependencies
+  description: Pull requests that update a dependency file
+  color: 0366d6
+- name: Documentation
+  description: Improvements or additions to documentation
+  color: 0366d6
+- name: Feature Request
+  description: Request to add a new feature
+  color: 008672
+- name: Feature
+  description: New feature that will be added to the project
+  color: cc227a
+- name: Fix
+  description: Pull requests that fixed a bug
+  color: cc227a
+- name: Good first issue
+  description: Good for newcomers
+  color: 7057ff
+- name: Help wanted
+  description: This issue is available to anyone that wants to help
+  color: 008672
+- name: 'Needs: Design'
+  description: The issues needs design work before implementing
+  color: c513d6
+- name: 'Needs: Feedback'
+  description: The issues needs feedback before implementing
+  color: c513d6
+- name: 'Needs: Investigation'
+  description: The issues needs investigation before implementing
+  color: c513d6
+- name: 'Needs: More Information'
+  description: The author needs to provide more information on the issue.
+  color: c513d6
+- name: P1
+  description: Bug or feature that has to be be fixed in the next patch
+  color: 0D47A1
+- name: P2
+  description: Bug or feature that has to be be fixed in the next minor patch
+  color: 1976D2
+- name: P3
+  description: Bug or feature that has to be be fixed in the next major patch
+  color: 42A5F5
+- name: P4
+  description:
+  color: 8DC9F9
+- name: P5
+  description:
+  color: C5DEF5
+- name: Question
+  description: Question about this project
+  color: 7057ff
+- name: 'Resolved: Answered'
+  description: The question raised by the author has been answered
+  color: 651ace
+- name: 'Resolved: By Design'
+  description: Resolved as behaviour is by design
+  color: 651ace
+- name: 'Resolved: Completed'
+  description: The issue has been resolved
+  color: 651ace
+- name: 'Resolved: Duplicate'
+  description: This issue or pull request already exists
+  color: 651ace
+- name: 'Resolved: Won't Fix'
+  description: The reported behaviour will not be changed
+  color: 651ace
+- name: Triage
+  description: Issue needs to be triaged
+  color: 7057ff

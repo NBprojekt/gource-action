@@ -68,6 +68,7 @@ if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it'
     optionalParams+=(--stop-date "${INPUT_GOURCE_STOP_DATE}")
 fi
 
+echo "Optional params: _${optionalParams[@]}_"
 
 printf "\n> \tGource"
 printf "\n> \t\tStarting Gource pipe for git repo"
@@ -88,7 +89,7 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--bloom-multiplier 1.2 \
 	--${GOURCE_RES} \
 	--stop-at-end \
-	./development.log \
+	./development.log ${optionalParams[@]} \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/gource.pipe &
 
@@ -109,7 +110,7 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--dir-name-depth 3 \
 	--filename-time 2 \
 	--max-user-speed 500 \
-	./development.log \
+	./development.log ${optionalParams[@]} \
 	-r ${INPUT_GOURCE_FPS} \
 	-o - >./tmp/overlay.pipe &
 

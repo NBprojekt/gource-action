@@ -24,7 +24,7 @@ inputs:
     default: 'Title'
     required: false
   gource_resolution:
-    description: 'Used gource resolution.'
+    description: 'Used gource resolution (2160p, 1440p, 1080p, 720p).'
     default: '1080p'
     required: false
   gource_fps:
@@ -48,11 +48,11 @@ inputs:
     default: '44'
     required: false
   gource_overlay_font_color:
-    description: ''Font color used by the overlay.'
+    description: 'Font color used by the overlay.'
     default: 'FFFFFF'
     required: false
   gource_camera_mode:
-    description: 'Camera mode (overview,track).'
+    description: 'Camera mode (overview, track).'
     default: 'overview'
     required: false
   gource_dir_depth:

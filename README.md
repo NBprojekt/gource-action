@@ -62,7 +62,7 @@ jobs:
           name: Gource
           path: ./gource/gource.mp4
 ```
-> After the workflows have successfully completed, you can download the MP3 file of your artifacts.  
+> After the workflows have successfully completed, you can download the MP4 file of your artifacts.  
 > Or use it in another Job.
 
 

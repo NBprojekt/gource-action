@@ -91,6 +91,8 @@ printf "\n> \tCopy generated mp4 to /github/workspace/gource"
 cp ./output/gource.mp4 /github/workspace/gource
 printf "\n> \tCopy logs to /github/workspace/gource/logs"
 cp ./logs/* /github/workspace/gource/logs
+chmod -R 777 /github/workspace/gource
+
 printf "\n> \tDelete working directory"
 rm -r /gource
 

@@ -29,7 +29,14 @@ jobs:
           gource_font_size: 40
 
       - name: 'Check output'
-        run: ls -al ./
+        run: |
+          ls -al ./
+          ls -al ./gource
+
+      - name: 'Test'
+        run: |
+          mkdir _test
+          mv ./gource/gource.mp4 ./_test/gource_mv_test.mp4
 
       - uses: actions/upload-artifact@v2
         with:

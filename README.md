@@ -132,8 +132,8 @@ A full list of all available options can be found [here][gource-docs].
 | gource_seconds_per_day    	| false     	| 0.1                  	| Speed of simulation in seconds per day.                         	                                         	|
 | gource_time_scale         	| false     	| 1.5                  	| Change simulation time scale.                                   	                                         	|
 | gource_user_scale         	| false     	| 1.2                  	| Change scale of user avatars.                                   	                                         	|
-| gource_start_date         	| false     	|                     	| Start with the first entry after the supplied date and optional time.                                       |
-| gource_stop_date          	| false     	|                     	| Stop after the last entry prior to the supplied date and optional time.                                   	|
+| gource_start_date         	| false     	| (date of first commit)| Start with the first entry after the supplied date and optional time.                                       |
+| gource_stop_date          	| false     	| (data of last commit) | Stop after the last entry prior to the supplied date and optional time.                                   	|
 
 > More comming soon.
 

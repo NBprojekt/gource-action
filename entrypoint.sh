@@ -53,7 +53,7 @@ fi
 
 # Set start and stop date if empty
 printf "\n>\n> Check if start and end date is set\n"
-if [ "${INPUT_START_DATE}" != "" ]; then
+if [ "${INPUT_START_DATE}" -eq "" ]; then
   printf "\n> \tStart date is empty\n"
   local first_commit=git rev-list --max-parents=0 HEAD
   echo "First commit: $first_commit"
@@ -63,7 +63,7 @@ if [ "${INPUT_START_DATE}" != "" ]; then
 else
   printf "\n> \tStart date is set to: $INPUT_START_DATE\n"
 fi
-if [ "${INPUT_END_DATE}" != "" ]; then
+if [ "${INPUT_END_DATE}" -eq "" ]; then
   printf "\n> \tEnd date is empty\n"
   local last_commit=git rev-parse HEAD
   echo "last commit: $last_commit"

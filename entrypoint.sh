@@ -51,6 +51,16 @@ else
   exit 1
 fi
 
+# Set start and stop date if empty
+printf "\n>\n> Check if start_date is set\n"
+if [ "${INPUT_START_DATE}" != "" ]; then
+  printf "\n> \tStart date is empty\n"
+  local first_commit=git rev-list --max-parents=0 HEAD
+  export INPUT_START_DATE=$(git show -s --format=%cd --date=short $first_commit)
+  printf "\n> \tSet start date to: $INPUT_START_DATE\n"
+else
+  printf "\n> \tStart date is set to: $INPUT_START_DATE\n"
+fi
 
 # Set proper env variables if we have a logo.
 printf "\n>\n> Logo check"

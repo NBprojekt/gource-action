@@ -52,7 +52,7 @@ else
 fi
 
 # Set start and stop date if empty
-printf "\n>\n> Check if start_date is set\n"
+printf "\n>\n> Check if start date is set\n"
 if [ "${INPUT_START_DATE}" != "" ]; then
   printf "\n> \tStart date is empty\n"
   local first_commit=git rev-list --max-parents=0 HEAD
@@ -60,6 +60,15 @@ if [ "${INPUT_START_DATE}" != "" ]; then
   printf "\n> \tSet start date to: $INPUT_START_DATE\n"
 else
   printf "\n> \tStart date is set to: $INPUT_START_DATE\n"
+fi
+printf "\n>\n> Check if end date is set\n"
+if [ "${INPUT_END_DATE}" != "" ]; then
+  printf "\n> \tEnd date is empty\n"
+  local last_commit=git rev-parse HEAD
+  export INPUT_END_DATE=$(git show -s --format=%cd --date=short $last_commit)
+  printf "\n> \tSet end date to: $INPUT_END_DATE\n"
+else
+  printf "\n> \tEnd date is set to: $INPUT_END_DATE\n"
 fi
 
 # Set proper env variables if we have a logo.

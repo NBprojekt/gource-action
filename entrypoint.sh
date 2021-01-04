@@ -54,22 +54,28 @@ fi
 # Set start and stop date if empty
 printf "\n>\n> Check if start and end date is set\n"
 if [ "${INPUT_GOURCE_START_DATE}" = "" ]; then
+  # // TODO: This needs some attention when used with multiple repos
+  cd ./git_repo
   printf "\n> \tStart date is empty\n"
-  local first_commit=git rev-list --max-parents=0 HEAD
+  first_commit=git rev-list --max-parents=0 HEAD
   echo "First commit: $first_commit"
   echo $(git show -s --format=%cd --date=short $first_commit)
   export INPUT_GOURCE_START_DATE=$(git show -s --format=%cd --date=short $first_commit)
   printf "\n> \tSet start date to: $INPUT_GOURCE_START_DATE\n"
+  cd ..
 else
   printf "\n> \tStart date is set to: $INPUT_GOURCE_START_DATE\n"
 fi
 if [ "${INPUT_GOURCE_STOP_DATE}" = "" ]; then
+  # // TODO: This needs some attention when used with multiple repos
+  cd ./git_repo
   printf "\n> \tEnd date is empty\n"
-  local last_commit=git rev-parse HEAD
+  last_commit=git rev-parse HEAD
   echo "last commit: $last_commit"
   echo $(git show -s --format=%cd --date=short $last_commit)
   export INPUT_GOURCE_STOP_DATE=$(git show -s --format=%cd --date=short $last_commit)
   printf "\n> \tSet end date to: $INPUT_GOURCE_STOP_DATE\n"
+  cd ..
 else
   printf "\n> \tEnd date is set to: $INPUT_GOURCE_STOP_DATE\n"
 fi

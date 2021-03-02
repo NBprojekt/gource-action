@@ -95,6 +95,10 @@ inputs:
     description: 'Stop after the last entry prior to the supplied date and optional time.'
     default: ''
     required: false
+  gource_file_filter:
+    description: 'Filter out file paths matching the specified regular expression.'
+    default: ''
+    required: false
 
 runs:
   using: 'docker'

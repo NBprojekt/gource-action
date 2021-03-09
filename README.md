@@ -77,7 +77,7 @@ Keys can be added directly to your .yml config file or referenced from your proj
 | avatars_url 	              | false       |         	            | Path of local directory containing user avatars.                                                           	|
 | gource_resolution         	| false     	| 1080p                	| Used gource resolution (2160p, 1440p, 1080p, 720p).             	                                          |
 
-## Advanced Settings
+## Advanced Example
 Lets use a more advanced setup to visualize the development from the [Docker CLI][docker-cli].
 ```yml
 name: Gource Action for Docker CLI
@@ -110,7 +110,7 @@ jobs:
 ```
 > This action can take up to _17 Minutes_
 
-## Advanced example
+## Advanced Settings
 This settings are all supported setting for [gource][gource-homepage] itself.  
 A full list of all available options can be found [here][gource-docs].
 

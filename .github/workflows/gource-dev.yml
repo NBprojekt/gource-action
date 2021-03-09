@@ -27,7 +27,7 @@ jobs:
           gource_resolution: '1080p'
           gource_fps: 60
           gource_font_size: 40
-          gource_file_filter: .+\.(png|md)$
+          gource_file_filter: ^.+\.(png|md)$
 
       - name: 'Check output'
         run: |

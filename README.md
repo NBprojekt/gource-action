@@ -134,8 +134,10 @@ A full list of all available options can be found [here][gource-docs].
 | gource_user_scale         	| false     	| 1.2                  	| Change scale of user avatars.                                   	                                         	|
 | gource_start_date         	| false     	| (date of first commit)| Start with the first entry after the supplied date and optional time.                                       |
 | gource_stop_date          	| false     	| (data of last commit) | Stop after the last entry prior to the supplied date and optional time.                                   	|
+| gource_file_filter         	| false     	|                       | Filter out file paths matching the specified regular expression.                                          	|
 
 > More comming soon.
+> If you are missin a parameter that you need just create a new issue with the title `Add support for --paramer-name` and `Feature Request: New Parameter`label. 
 
 ## Todos
 

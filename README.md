@@ -74,7 +74,7 @@ Keys can be added directly to your .yml config file or referenced from your proj
 | git_url     	              | false     	| ./      	            | Location of git repository. Can also be an remote repository e.g.: https://github.com/acaudwell/Gource.git 	|
 | git_token   	              | false     	|         	            | If the provided repository is private, the action need an token with read scope.                           	|
 | logo_url    	              | false     	|         	            | Displayed icon on bottom right corner. Can be local "./logo.png" or Url. For Url it must be png or jgp      |
-| avatars_auto_fetch          | false       | true    	            | Tries to fetch user avatar from all contributors. If this is enable "avatars_url" will be ignored.          |
+| avatars_auto_fetch          | false       | false    	            | Tries to fetch user avatar from all contributors. If this is enable "avatars_url" will be ignored.          |
 | avatars_url 	              | false       |         	            | Path of local directory containing user avatars.                                                           	|
 
 ## Advanced Example

@@ -17,7 +17,7 @@ inputs:
     required: false
   avatars_auto_fetch:
     description: 'Tries to fetch user avatar from all contributors. If this is enable "avatars_url" will be ignored.'
-    default: 'true'
+    default: 'false'
     required: false
   avatars_url:
     description: 'Path of local directory containing user avatars.'

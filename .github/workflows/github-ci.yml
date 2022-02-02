@@ -1,0 +1,47 @@
+name: GitHub CI
+on:
+  push:
+    branches:
+      - master
+      - 'dev/**'
+
+jobs:
+  lint-shell:
+    name: 👀 Lint Shell
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run ShellCheck
+        uses: azohra/shell-linter@latest
+
+  lint-yml:
+    name: 👀 Lint Shell
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Run yaml-lint
+        uses: ibiqlik/action-yamllint@v3
+
+  todo-to-issue:
+    name: ✍ Todo to issue
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: 'TODO to Issue'
+        uses: 'alstr/todo-to-issue-action@master'
+        with:
+          REPO: ${{ github.repository }}
+          BEFORE: ${{ github.event.before }}
+          SHA: ${{ github.sha }}
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LABELS: 'TODO, Bot'
+          COMMENT_MARKER: '//'

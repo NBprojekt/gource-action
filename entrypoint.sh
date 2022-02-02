@@ -116,7 +116,8 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
 
     # Use github api to get avatar url using the author email
     avatar=$(wget -O - -o /dev/null https://api.github.com/search/users?q=$email | jq -r '.items[0].avatar_url')
-    if [ $avatar != null ]; then
+    if [ $avatar != "null" ]; then
+      echo "Downloading avatar for $name from: $avatar"
       wget -O /gource/avatars/$name.png $avatar >/dev/null 2>&1
     fi
   done <<< "$(git log --git-dir ./git_repo/.git --pretty="%aN | %aE" | sort | uniq)";

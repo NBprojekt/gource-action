@@ -24,11 +24,7 @@ jobs:
           git_url: ./
           avatars_url: ./avatars/
           gource_title: 'Gource Action Development'
-          logo_url: 'https://user-images.githubusercontent.com/24683383/92398226-79a40680-f128-11ea-9f54-6ccbaca4a6a5.png'
-          gource_resolution: '1080p'
-          gource_fps: 60
-          gource_font_size: 40
-          gource_file_filter: ^.+\.(png|md)$
+          logo_url: ./logo.png
 
       - name: 'Check output'
         run: |
@@ -60,7 +56,6 @@ jobs:
           avatars_url: ./avatars/
           gource_title: 'Gource Action Development'
           logo_url: 'https://user-images.githubusercontent.com/24683383/92398226-79a40680-f128-11ea-9f54-6ccbaca4a6a5.png'
-          gource_file_filter: ^.+\.(png|md)$
 
       - name: 'Check output'
         run: |
@@ -92,7 +87,7 @@ jobs:
           git_url: ./
           avatars_url: ./avatars/
           gource_title: 'Gource Action Development'
-          logo_url: './logo.png'
+          logo_url: 'https://user-images.githubusercontent.com/24683383/92398226-79a40680-f128-11ea-9f54-6ccbaca4a6a5.png'
           gource_file_filter: ^.+\.(png|md)$
 
       - name: 'Check output'

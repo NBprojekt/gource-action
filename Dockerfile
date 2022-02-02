@@ -8,7 +8,8 @@ RUN \
     ffmpeg \
     git \
     gource \
-    imagemagick;
+    imagemagick \
+    jq;
 
 # Copy scripts into image
 COPY ./entrypoint.sh ./gource.sh /usr/local/bin/

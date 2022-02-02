@@ -107,6 +107,8 @@ printf "\n>\n> Auto fetch contributor avatars"
 if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
   printf "\n> \tFetching all contributors\n"
 
+  ls -al  /gource/git_repo/
+
   while IFS='|' read -ra author; do
     name=${author[0]}
     email=${author[1]}

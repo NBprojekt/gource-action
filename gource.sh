@@ -67,6 +67,9 @@ fi
 if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
     OPTIONAL_PARAMS+="--start-date ${INPUT_GOURCE_START_DATE} "
 fi
+if [[ -z "$INPUT_GOURCE_FILE_FILTER" ]]; then
+    OPTIONAL_PARAMS+="--file-filter \"$INPUT_GOURCE_FILE_FILTER\" "
+fi
 
 printf "\n> \t\tUsing optional params: ${OPTIONAL_PARAMS}"
 
@@ -85,7 +88,6 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--font-size ${INPUT_GOURCE_FONT_SIZE} \
 	--dir-name-depth ${INPUT_GOURCE_DIR_DEPTH} \
 	--filename-time ${INPUT_GOURCE_FILENAME_TIME} \
-	--file-filter "${INPUT_GOURCE_FILE_FILTER}" \
 	--max-user-speed ${INPUT_GOURCE_MAX_USER_SPEED} \
 	--bloom-multiplier 1.2 \
 	--${GOURCE_RES} ${OPTIONAL_PARAMS} \

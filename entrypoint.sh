@@ -107,8 +107,6 @@ printf "\n>\n> Auto fetch contributor avatars"
 if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
   printf "\n> \tFetching all contributors\n"
 
-  ls -al  /gource/git_repo/
-
   while IFS='|' read -ra author; do
     name=${author[0]}
     email=${author[1]}
@@ -122,9 +120,7 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
       echo "Downloading avatar for $name from: $avatar"
       wget -O /gource/avatars/$name.png $avatar >/dev/null 2>&1
     fi
-  done <<< "$(git log --git-dir /gource/git_repo/.git --pretty="%aN | %aE" | sort | uniq)";
-
-  ls -al /gource/avatars/
+  done <<< "$(git --git-dir /gource/git_repo/.git log --pretty="%aN | %aE" | sort | uniq)";
 else
   printf "\n> \tAuto fetch is disabled, fall back to avatars directory\n"
 

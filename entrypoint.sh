@@ -123,7 +123,6 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
       wget -O "/gource/avatars/$name.png" $avatar >/dev/null 2>&1
     fi
   done <<< "$(git --git-dir /gource/git_repo/.git log --pretty="%aN | %aE" | sort | uniq)";
-  ls -al /gource/avatars/
 else
   printf "\n> \tAuto fetch is disabled, fall back to avatars directory\n"
 

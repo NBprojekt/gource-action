@@ -73,7 +73,7 @@ Keys can be added directly to your .yml config file or referenced from your proj
 |---------------------------	|-----------	|----------------------	|------------------------------------------------------------------------------------------------------------	|
 | git_url     	              | false     	| ./      	            | Location of git repository. Can also be an remote repository e.g.: https://github.com/acaudwell/Gource.git 	|
 | git_token   	              | false     	|         	            | If the provided repository is private, the action need an token with read scope.                           	|
-| logo_url    	              | false     	|         	            | Displayed icon on bottom right corner.                                                                     	|
+| logo_url    	              | false     	|         	            | Displayed icon on bottom right corner. Can be local "./logo.png" or Url. For Url it must be png or jgp      |
 | avatars_url 	              | false       |         	            | Path of local directory containing user avatars.                                                           	|
 | gource_resolution         	| false     	| 1080p                	| Used gource resolution (2160p, 1440p, 1080p, 720p).             	                                          |
 

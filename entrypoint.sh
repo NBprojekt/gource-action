@@ -82,12 +82,12 @@ fi
 
 # Set proper env variables if we have a logo.
 printf "\n>\n> Logo check"
-if [ "${INPUT_LOGO_URL}" != "" ]; then
-  urlRegex='^https?:\/\/.+(png|jpg)$'
-  if [[ $url =~ $urlRegex ]]; then
-    printf "\n> \tDownloading logo"
+if [ "$INPUT_LOGO_URL" != "" ]; then
+  if [[ $INPUT_LOGO_URL =~ ^https?:\/\/.+(png|jpg)$ ]]; then
+    printf "\n> \tDownloading file"
     wget -O ./logo.image $INPUT_LOGO_URL >/dev/null 2>&1
   else
+    printf "\n> \tUsing local file"
     mv $INPUT_LOGO_URL ./logo.image
   fi
 

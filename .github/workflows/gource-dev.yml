@@ -94,6 +94,6 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: gource-external
+          name: gource-no
           path: ./gource
           retention-days: 1

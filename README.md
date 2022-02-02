@@ -150,4 +150,4 @@ A full list of all available options can be found [here][gource-docs].
 <!-- Links -->
 [docker-cli]: https://github.com/docker/cli
 [gource-homepage]: https://gource.io/
-[gource-docs]: https://github.com/acaudwell/Gource/blob/master/README
+[gource-docs]: https://github.com/acaudwell/Gource/blob/master/README.md

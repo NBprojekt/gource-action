@@ -74,8 +74,8 @@ Keys can be added directly to your .yml config file or referenced from your proj
 | git_url     	              | false     	| ./      	            | Location of git repository. Can also be an remote repository e.g.: https://github.com/acaudwell/Gource.git 	|
 | git_token   	              | false     	|         	            | If the provided repository is private, the action need an token with read scope.                           	|
 | logo_url    	              | false     	|         	            | Displayed icon on bottom right corner. Can be local "./logo.png" or Url. For Url it must be png or jgp      |
+| avatars_auto_fetch          | false       | true    	            | Tries to fetch user avatar from all contributors. If this is enable "avatars_url" will be ignored.          |
 | avatars_url 	              | false       |         	            | Path of local directory containing user avatars.                                                           	|
-| gource_resolution         	| false     	| 1080p                	| Used gource resolution (2160p, 1440p, 1080p, 720p).             	                                          |
 
 ## Advanced Example
 Lets use a more advanced setup to visualize the development from the [Docker CLI][docker-cli].
@@ -110,12 +110,13 @@ jobs:
 ```
 > This action can take up to _17 Minutes_
 
-## Advanced Settings
+## Gource Settings
 This settings are all supported setting for [gource][gource-homepage] itself.  
 A full list of all available options can be found [here][gource-docs].
 
 | Key Name                  	| Required? 	| Default              	| Description                                                                                                	|
 |---------------------------	|-----------	|----------------------	|------------------------------------------------------------------------------------------------------------	|
+| gource_resolution         	| false     	| 1080p                	| Used gource resolution (2160p, 1440p, 1080p, 720p).             	                                          |
 | gource_title              	| false     	| Title                	| Set a title.                                                    	                                         	|
 | gource_fps                	| false     	| 60                   	| Used gource fps.                                                	                                         	|
 | gource_auto_skip_seconds  	| false     	| 0.5                  	| Skip to next entry if nothing happens for a number of seconds.  	                                         	|

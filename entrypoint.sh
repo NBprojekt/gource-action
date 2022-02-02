@@ -83,9 +83,14 @@ fi
 # Set proper env variables if we have a logo.
 printf "\n>\n> Logo check"
 if [ "${INPUT_LOGO_URL}" != "" ]; then
-  # // TODO: Add support for local logo
-  printf "\n> \tDownloading logo"
-	wget -O ./logo.image ${INPUT_LOGO_URL} >/dev/null 2>&1
+  urlRegex='^https?:\/\/.+(png|jpg)$'
+  if [[ $url =~ $urlRegex ]]; then
+    printf "\n> \tDownloading logo"
+    wget -O ./logo.image $INPUT_LOGO_URL >/dev/null 2>&1
+  else
+    mv $INPUT_LOGO_URL ./logo.image
+  fi
+
   convert -geometry x160 ./logo.image ./logo.image
 
   printf "\n> \tUsing logo from: ${INPUT_LOGO_URL} \n"

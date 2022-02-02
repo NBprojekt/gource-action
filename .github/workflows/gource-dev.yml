@@ -6,7 +6,7 @@ on:
       - 'dev/**'
 
 jobs:
-  dev-action:
+  local-images:
     runs-on: ubuntu-latest
 
     steps:
@@ -37,6 +37,71 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: gource
+          name: gource-local
+          path: ./gource
+          retention-days: 1
+
+  external-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: 'Current folder'
+        run: ls -al
+
+      - name: 'Gource Action'
+        uses: ./
+        with:
+          git_url: ./
+          avatars_url: ./avatars/
+          gource_title: 'Gource Action Development'
+          logo_url: 'https://user-images.githubusercontent.com/24683383/92398226-79a40680-f128-11ea-9f54-6ccbaca4a6a5.png'
+          gource_file_filter: ^.+\.(png|md)$
+
+      - name: 'Check output'
+        run: |
+          ls -al ./
+          ls -al ./gource
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: gource-external
+          path: ./gource
+          retention-days: 1
+
+
+  file-filter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: 'Current folder'
+        run: ls -al
+
+      - name: 'Gource Action'
+        uses: ./
+        with:
+          git_url: ./
+          avatars_url: ./avatars/
+          gource_title: 'Gource Action Development'
+          logo_url: './logo.png'
+          gource_file_filter: ^.+\.(png|md)$
+
+      - name: 'Check output'
+        run: |
+          ls -al ./
+          ls -al ./gource
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: gource-external
           path: ./gource
           retention-days: 1

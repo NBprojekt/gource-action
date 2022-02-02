@@ -39,3 +39,4 @@ jobs:
         with:
           name: gource
           path: ./gource
+          retention-days: 1

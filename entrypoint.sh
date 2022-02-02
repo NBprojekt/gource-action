@@ -88,7 +88,7 @@ if [ "$INPUT_LOGO_URL" != "" ]; then
     wget -O ./logo.image $INPUT_LOGO_URL >/dev/null 2>&1
   else
     printf "\n> \tUsing local file"
-    mv $INPUT_LOGO_URL ./logo.image
+    mv "./git_repo/$INPUT_LOGO_URL" ./logo.image
   fi
 
   convert -geometry x160 ./logo.image ./logo.image

@@ -102,14 +102,38 @@ else
   export FILTER_GRAPH_MAP=" -map [with_date] "
 fi
 
-# Copy user imgages if provided
-printf "\n>\n> Avatars check"
-if [ "${INPUT_AVATARS_URL}" != "" ]; then
-  printf "\n> \tCopy avatars directory: ${INPUT_AVATARS_URL}\n"
-  find "/github/workspace/${INPUT_AVATARS_URL}" -type f -exec cp {} /gource/avatars \;
+# Auto fetch contributor avatars
+printf "\n>\n> Auto fetch contributor avatars"
+if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
+  printf "\n> \tFetching all contributors\n"
+
+  mkdir /gource/avatars
+  while IFS='|' read -ra author; do
+    name=${author[0]}
+    email=${author[1]}
+    # This hack removes leating and trailing spaces
+    email="${email#"${email%%[![:space:]]*}"}"
+    email="${email%"${email##*[![:space:]]}"}"
+
+    # Use github api to get avatar url using the author email
+    avatar=$(wget -O - -o /dev/null https://api.github.com/search/users?q=$email | jq -r '.items[0].avatar_url')
+    if [ $avatar != null ]; then
+      wget -O /gource/avatars/$name $avatar >/dev/null 2>&1
+    fi
+  done <<< "$(git log --pretty="%aN | %aE" | sort | uniq)";
 else
-  printf "\n> \tNo avatars directory provided, skipping avatars setup\n"
+  printf "\n> \tAuto fetch is disabled, fall back to avatars directory\n"
+
+  # Copy user imgages if provided
+  printf "\n>\n> Avatars check"
+  if [ "${INPUT_AVATARS_URL}" != "" ]; then
+    printf "\n> \tCopy avatars directory: ${INPUT_AVATARS_URL}\n"
+    find "/github/workspace/${INPUT_AVATARS_URL}" -type f -exec cp {} /gource/avatars \;
+  else
+    printf "\n> \tNo avatars directory provided, skipping avatars setup\n"
+  fi
 fi
+
 
 # Run the visualization
 printf "\n>\n> Starting gource script\n"

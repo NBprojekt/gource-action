@@ -120,9 +120,10 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
     avatar=$(wget -O - -o /dev/null https://api.github.com/search/users?q=$email | jq -r '.items[0].avatar_url')
     if [ "$avatar" != "null" ]; then
       printf "\n> \t\tDownloading avatar for $name from: $avatar"
-      wget -O /gource/avatars/$name.png $avatar >/dev/null 2>&1
+      wget -O "/gource/avatars/$name.png" $avatar >/dev/null 2>&1
     fi
   done <<< "$(git --git-dir /gource/git_repo/.git log --pretty="%aN | %aE" | sort | uniq)";
+  ls -al /gource/avatars/
 else
   printf "\n> \tAuto fetch is disabled, fall back to avatars directory\n"
 

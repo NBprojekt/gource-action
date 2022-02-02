@@ -67,3 +67,33 @@ jobs:
           name: gource-external
           path: ./gource
           retention-days: 1
+
+  no-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: 'Current folder'
+        run: ls -al
+
+      - name: 'Gource Action'
+        uses: ./
+        with:
+          git_url: ./
+          avatars_url: ./avatars/
+          gource_title: 'Gource Action Development'
+
+      - name: 'Check output'
+        run: |
+          ls -al ./
+          ls -al ./gource
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: gource-external
+          path: ./gource
+          retention-days: 1

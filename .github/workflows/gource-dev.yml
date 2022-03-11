@@ -37,3 +37,35 @@ jobs:
           name: gource-local
           path: ./gource
           retention-days: 1
+
+  test-new-url-regex:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Checkout'
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: 'Current folder'
+        run: ls -al
+
+      - name: 'Gource Action'
+        uses: ./
+        with:
+          git_url: ./
+          avatars_url: ./avatars/
+          gource_title: 'Gource Action Development'
+          logo_url: https://raw.githubusercontent.com/glotaran/pyglotaran/main/docs/source/images/glotaran.png?raw=true
+          avatars_auto_fetch: true
+
+      - name: 'Check output'
+        run: |
+          ls -al ./
+          ls -al ./gource
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: gource-local
+          path: ./gource
+          retention-days: 1

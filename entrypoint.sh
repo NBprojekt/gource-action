@@ -111,23 +111,26 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
 
   while IFS='|' read -ra author; do
     name=${author[0]}
-    name="${name#"${name%%[![:space:]]*}"}"
+    name="${name#"${name%%[![:space:]]*}"}" # This hack removes leating and trailing spaces
     name="${name%"${name##*[![:space:]]}"}"
     email=${author[1]}
-    # This hack removes leating and trailing spaces
     email="${email#"${email%%[![:space:]]*}"}"
     email="${email%"${email##*[![:space:]]}"}"
 
 
     # Use github api to get avatar url using the author email
-    avatar=$(wget -O - -o /dev/null https://api.github.com/search/users?q=$email | jq -r '.items[0].avatar_url')
+    avatar_by_email=$(wget -O - -o /dev/null https://api.github.com/search/users?q=$email | jq -r '.items[0].avatar_url')
+    avatar_by_name=$(wget -O - -o /dev/null https://api.github.com/users/$name | jq -r '.avatar_url')
 
-    echo "$name;$email;https://api.github.com/search/users?q=$email;$avatar" >> avatar_users.debug
-
-    if [ "$avatar" != "null" ]; then
+    if [ "$avatar_by_email" != "null" ]; then
+      printf "\n> \t\tDownloading avatar for $name from: $avatar"
+      wget -O "/gource/avatars/$name.png" $avatar >/dev/null 2>&1
+    else if [ "$avatar_by_name" != "null" ]; then
       printf "\n> \t\tDownloading avatar for $name from: $avatar"
       wget -O "/gource/avatars/$name.png" $avatar >/dev/null 2>&1
     fi
+
+    echo "$name;$email;https://api.github.com/search/users?q=$email;$avatar_by_email;https://api.github.com/users/$name;$avatar_by_name" >> avatar_users.debug
   done <<< "$(git --git-dir /gource/git_repo/.git log --pretty="%aN | %aE" | sort | uniq)";
 
   cat avatar_users.debug

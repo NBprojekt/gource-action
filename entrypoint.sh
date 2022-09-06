@@ -123,9 +123,9 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
     avatar_by_name=$(wget -O - -o /dev/null https://api.github.com/users/$name | jq -r '.avatar_url')
 
     if [ "$avatar_by_email" != "null" ]; then
-      printf "\n> \t\tDownloading avatar for $name from: $avatar"
+      printf "\n> \t\tDownloading avatar for $email from: $avatar"
       wget -O "/gource/avatars/$name.png" $avatar >/dev/null 2>&1
-    else if [ "$avatar_by_name" != "null" ]; then
+    elif [ "$avatar_by_name" != "null" ]; then
       printf "\n> \t\tDownloading avatar for $name from: $avatar"
       wget -O "/gource/avatars/$name.png" $avatar >/dev/null 2>&1
     fi

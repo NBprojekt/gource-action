@@ -124,10 +124,10 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
 
     if [ "$avatar_by_email" != "null" ]; then
       printf "\n> \t\tDownloading avatar for $email from: $avatar"
-      wget -O "/gource/avatars/$name.png" $avatar >/dev/null 2>&1
+      wget -O "/gource/avatars/$name.png" $avatar_by_email >/dev/null 2>&1
     elif [ "$avatar_by_name" != "null" ]; then
       printf "\n> \t\tDownloading avatar for $name from: $avatar"
-      wget -O "/gource/avatars/$name.png" $avatar >/dev/null 2>&1
+      wget -O "/gource/avatars/$name.png" $avatar_by_name >/dev/null 2>&1
     fi
 
     echo "$name;$email;https://api.github.com/search/users?q=$email;$avatar_by_email;https://api.github.com/users/$name;$avatar_by_name" >> avatar_users.debug

@@ -91,7 +91,7 @@ jobs:
           fetch-depth: 0
 
       - name: 'Gource Action'
-        uses: nbprojekt/gource-action@v1
+        uses: ./
         with:
           avatars_auto_fetch: true
           gource_title: 'NoitaMP Gource master'

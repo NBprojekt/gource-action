@@ -94,6 +94,7 @@ jobs:
         uses: ./
         with:
           avatars_auto_fetch: true
+          git_url: 'https://github.com/Ismoh/NoitaMP'
           gource_title: 'NoitaMP Gource master'
           gource_resolution: '1080p'
           gource_fps: 60

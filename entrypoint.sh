@@ -123,7 +123,7 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
     avatar_by_name=$(wget -O - -o /dev/null https://api.github.com/users/$name | jq -r '.avatar_url')
 
     if [ "$avatar_by_name" != "null" ]; then
-      printf "\n> \t\tDownloading avatar for $name from: $avatar"
+      printf "\n> \t\tDownloading avatar for $name from: $avatar_by_name"
       wget -O "/gource/avatars/$name.png" $avatar_by_name >/dev/null 2>&1
       ((avatarsCount=avatarsCount+1))
       continue
@@ -131,15 +131,15 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
       
     avatar_by_email=$(wget -O - -o /dev/null https://api.github.com/search/users?q=$email | jq -r '.items[0].avatar_url')
     if [ "$avatar_by_email" != "null" ]; then
-      printf "\n> \t\tDownloading avatar for $email from: $avatar"
+      printf "\n> \t\tDownloading avatar for $email from: $avatar_by_email"
       wget -O "/gource/avatars/$name.png" $avatar_by_email >/dev/null 2>&1
       ((avatarsCount=avatarsCount+1))
       continue
     fi
   done <<< "$(git --git-dir /gource/git_repo/.git log --pretty="%aN | %aE" | sort | uniq)";
 
-  printf "\n>\n> Found $contributorCount contibutors"
-  printf "\n>\n> Successfully fetched $avatarsCount avatars"
+  printf "\n>\n> \tFound $contributorCount contibutors"
+  printf "\n> \tSuccessfully fetched $avatarsCount avatars"
 else
   printf "\n> \tAuto fetch is disabled, fall back to avatars directory\n"
 

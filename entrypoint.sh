@@ -106,10 +106,11 @@ fi
 printf "\n>\n> Auto fetch contributor avatars: ${INPUT_AVATARS_AUTO_FETCH}"
 if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
   printf "\n> \tFetching all contributors\n"
-
-  touch avatar_users.debug
+  contributorCount=0
+  avatarsCount=0
 
   while IFS='|' read -ra author; do
+    ((contributorCount=contributorCount+1))
     name=${author[0]}
     name="${name#"${name%%[![:space:]]*}"}" # This hack removes leating and trailing spaces
     name="${name%"${name##*[![:space:]]}"}"
@@ -118,22 +119,27 @@ if [ "${INPUT_AVATARS_AUTO_FETCH}" == "true" ]; then
     email="${email%"${email##*[![:space:]]}"}"
 
 
-    # Use github api to get avatar url using the author email
-    avatar_by_email=$(wget -O - -o /dev/null https://api.github.com/search/users?q=$email | jq -r '.items[0].avatar_url')
+    # Use github api to get avatar url using the author name or email
     avatar_by_name=$(wget -O - -o /dev/null https://api.github.com/users/$name | jq -r '.avatar_url')
 
+    if [ "$avatar_by_name" != "null" ]; then
+      printf "\n> \t\tDownloading avatar for $name from: $avatar"
+      wget -O "/gource/avatars/$name.png" $avatar_by_name >/dev/null 2>&1
+      ((avatarsCount=avatarsCount+1))
+      continue
+    fi
+      
+    avatar_by_email=$(wget -O - -o /dev/null https://api.github.com/search/users?q=$email | jq -r '.items[0].avatar_url')
     if [ "$avatar_by_email" != "null" ]; then
       printf "\n> \t\tDownloading avatar for $email from: $avatar"
       wget -O "/gource/avatars/$name.png" $avatar_by_email >/dev/null 2>&1
-    elif [ "$avatar_by_name" != "null" ]; then
-      printf "\n> \t\tDownloading avatar for $name from: $avatar"
-      wget -O "/gource/avatars/$name.png" $avatar_by_name >/dev/null 2>&1
+      ((avatarsCount=avatarsCount+1))
+      continue
     fi
-
-    echo "$name;$email;https://api.github.com/search/users?q=$email;$avatar_by_email;https://api.github.com/users/$name;$avatar_by_name" >> avatar_users.debug
   done <<< "$(git --git-dir /gource/git_repo/.git log --pretty="%aN | %aE" | sort | uniq)";
 
-  cat avatar_users.debug
+  printf "\n>\n> Found $contributorCount contibutors"
+  printf "\n>\n> Successfully fetched $avatarsCount avatars"
 else
   printf "\n> \tAuto fetch is disabled, fall back to avatars directory\n"
 

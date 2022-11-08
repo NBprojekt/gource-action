@@ -67,7 +67,7 @@ fi
 if [[ $INPUT_GOURCE_START_DATE == *[!\ ]* ]]; then # Temporyry fix, check if it's a date
     OPTIONAL_PARAMS+="--start-date ${INPUT_GOURCE_START_DATE} "
 fi
-if [[ -z "$INPUT_GOURCE_FILE_FILTER" ]]; then
+if [[ ! -z "$INPUT_GOURCE_FILE_FILTER" ]]; then
     OPTIONAL_PARAMS+="--file-filter \"$INPUT_GOURCE_FILE_FILTER\" "
 fi
 

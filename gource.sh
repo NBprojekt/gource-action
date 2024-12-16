@@ -89,7 +89,8 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--dir-name-depth ${INPUT_GOURCE_DIR_DEPTH} \
 	--filename-time ${INPUT_GOURCE_FILENAME_TIME} \
 	--max-user-speed ${INPUT_GOURCE_MAX_USER_SPEED} \
-	--bloom-multiplier 1.2 \
+	--bloom-multiplier ${INPUT_GOURCE_BLOOM_MULTIPLIER} \
+	--bloom-intensity ${INPUT_GOURCE_BLOOM_INTENSITY} \
 	--${GOURCE_RES} ${OPTIONAL_PARAMS} \
 	--stop-at-end \
 	./development.log \
@@ -97,11 +98,11 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	-o - >./tmp/gource.pipe &
 
 printf "\n> \t\tStarting Gource pipe for overlay components"
-gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
+gource ${KEY_PARAM} \
+	--seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--user-scale ${INPUT_GOURCE_USER_SCALE} \
 	--time-scale ${INPUT_GOURCE_TIME_SCALE} \
 	--auto-skip-seconds ${INPUT_GOURCE_AUTO_SKIP_SECONDS} \
-	--key \
 	--transparent \
 	--background-colour 202021 \
 	--font-colour ${INPUT_GOURCE_OVERLAY_FONT_COLOR} \

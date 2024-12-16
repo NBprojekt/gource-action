@@ -81,9 +81,9 @@ jobs:
   #         path: ./gource
   #         retention-days: 1
 
-  avatar-issues:
+  check-new-options:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: 'Checkout'
         uses: actions/checkout@v2
@@ -93,14 +93,24 @@ jobs:
       - name: 'Gource Action'
         uses: ./
         with:
-          avatars_auto_fetch: true
-          git_url: 'https://github.com/Ismoh/NoitaMP'
-          gource_title: 'NoitaMP Gource master'
-          gource_resolution: '1080p'
+          git_url: https://github.com/chkpwd/dotfiles
+          gource_title: IaC Repo
+          logo_url: https://github.com/git.png
+          gource_resolution: 1080p
           gource_fps: 60
-          gource_font_size: 40
+          avatars_auto_fetch: true
+          gource_bloom_intensity: 0.5
+          gource_bloom_multiplier: 0.5
           gource_auto_skip_seconds: 0.1
-          gource_seconds_per_day: 0.1
+          gource_camera_mode: track
+          gource_filename_time: 2
+          gource_seconds_per_day: 0.25
+          gource_time_scale: 2.5
+          gource_background_color: 0D1116
+          gource_overlay_background_color: 0D1116
+          gource_font_size: 80
+          gource_hide_items: mouse,progress,dirnames
+
 
       - name: 'Upload gource video'
         uses: actions/upload-artifact@v2

@@ -98,7 +98,7 @@ gource --seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	-o - >./tmp/gource.pipe &
 
 printf "\n> \t\tStarting Gource pipe for overlay components"
-gource ${KEY_PARAM} \
+gource ${INPUT_GOURCE_KEY} \
 	--seconds-per-day ${INPUT_GOURCE_SECONDS_PER_DAY} \
 	--user-scale ${INPUT_GOURCE_USER_SCALE} \
 	--time-scale ${INPUT_GOURCE_TIME_SCALE} \

@@ -35,6 +35,18 @@ inputs:
     description: 'Used gource fps.'
     default: '60'
     required: false
+  gource_bloom_multiplier:
+    description: 'Adjust the amount of bloom.'
+    default: '0.5'
+    required: false
+  gource_bloom_intensity:
+    description: 'Adjust the intensity of bloom.'
+    default: '0.5'
+    required: false
+  gource_key:
+    description: 'Show file extension key.'
+    default: ''
+    required: false
   gource_auto_skip_seconds:
     description: 'Skip to next entry if nothing happens for a number of seconds.'
     default: '0.5'

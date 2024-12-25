@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
@@ -24,7 +24,7 @@ jobs:
           logo_url: 'https://user-images.githubusercontent.com/24683383/92398226-79a40680-f128-11ea-9f54-6ccbaca4a6a5.png'
 
       - name: 'Upload gource video'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Gource action
           path: ./gource/gource.mp4
@@ -47,7 +47,7 @@ jobs:
           gource_stop_date: '2019-12-31'
 
       - name: 'Upload gource video'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Docker CLI
           path: ./gource/gource.mp4

@@ -49,7 +49,7 @@ jobs:
 
     steps:
       - name: 'Checkout'
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
         
@@ -57,7 +57,7 @@ jobs:
         uses: nbprojekt/gource-action@v1
 
       - name: 'Upload gource video'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Gource
           path: ./gource/gource.mp4
@@ -103,7 +103,7 @@ jobs:
           gource_start_date: '2016-04-18'
           gource_stop_date: '2019-12-31'
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         with:
           name: gource
           path: ./gource/gource.mp4
